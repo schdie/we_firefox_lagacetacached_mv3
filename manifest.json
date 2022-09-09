@@ -1,0 +1,50 @@
+{
+  "description": "Cached content retrieval for lagaceta.com.ar",
+  "manifest_version": 3,
+  "name": "LG Premium",
+  "version": "3.21",
+  
+  "icons": {
+    "48": "icons/48.png",
+    "96": "icons/96.png",
+    "128": "icons/128.png"
+  },
+
+  "permissions": [
+    "storage", "webRequest", "webRequestBlocking", "*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"
+  ],
+  
+  "web_accessible_resources": [
+    "controller.js"
+  ],
+
+  "background": {
+    "scripts": ["background.js"]
+  },
+  
+  "page_action": {
+	"show_matches": ["*://*.lagaceta.com.ar/*"],
+    "default_popup": "popup.html",
+		"default_icon": {
+      "48": "/icons/48.png",
+      "96": "/icons/96.png",
+      "128": "/icons/128.png"
+    }
+  },
+  
+  "content_scripts": [
+  {
+    "matches": ["*://*.lagaceta.com.ar/*"],
+    "css": ["content.css"],
+    "js": ["content.js"],
+    "run_at": "document_start"
+    }
+  ],
+
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "103.0"
+    }
+  }
+  
+}
