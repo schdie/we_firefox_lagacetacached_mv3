@@ -1,1 +1,5 @@
-# we_firefox_lagacetapremium_mv3
+# firefox webextension
+## lagacetapremium
+### mv3
+1. retrieves cached content from google's server if available.
+2. dark theme mode implemented with custom local css on the fly.

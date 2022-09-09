@@ -1,0 +1,172 @@
+/* disable sub publicity */
+/* run_at document_start */
+header .center .links a.suscribe { display: none !important; }
+#sidebar .suscription { display: none !important; }
+.paywall { display: none !important; }
+.body-blackout { display: none !important; }
+/* Mobile */
+header.small .suscribeWidget { display: none !important; }
+/* run_at document_end */
+.block .frame { display: none !important; }
+div[class^="add big topbanner"] {
+    display: none !important;
+}
+.add { background: none !important; }
+
+/* dark mode */
+.darkmode header { background-color: #202124 !important; }
+.darkmode header .center { background-color: #202124 !important; }
+.darkmode body { background-color: #202124 !important; }
+.darkmode body, html { background-color: #202124 !important; }
+.darkmode h1 { color: #fff !important; }
+.darkmode h2 { color: #fff !important; }
+.darkmode h3 { color: #fff !important; }
+.darkmode h4 { color: #fff !important; }
+.darkmode a { color: #fff !important; }
+.darkmode .dblue { color: #fff !important; }
+
+.darkmode .article .articleHead .breadcrumb a .icon-angle-right-regular, .article .articleHead .breadcrumb span .icon-angle-right-regular { color: #C0C0C0 !important; }
+.darkmode p { color: #F5F5F5 !important; }
+/* top right comments and shares */
+.darkmode .icon-share-light { color: #808080 !important; }
+.darkmode .js-share-count { color: #808080 !important; }
+.darkmode .icon-comments-light { color: #808080 !important; }
+.darkmode .js-comment-count { color: #808080 !important; }
+/* top left fb wp share */ 
+.darkmode .icon-facebook-brands { color: #0070D7 !important; }
+.darkmode .icon-whatsapp-brands { color: #0070D7 !important; }
+.darkmode .icon-share-regular { color: #0070D7 !important; }
+
+.darkmode .txt span { color: #808080 !important; }
+.darkmode .author { color: #808080 !important; }
+.darkmode .date { color: #808080 !important; }
+.darkmode .txt b { color: #808080 !important; }
+.darkmode .titleHead span { color: #fff !important; }
+.darkmode .titleHead.small span { color: #fff !important; }
+.darkmode .dilog-h2 { color: #fff !important; }
+.darkmode .dilog-p { color: #F5F5F5 !important; }
+.darkmode .icon-star-solid { color: #D8AC0F !important; }
+.darkmode .text .tag { color: #fff !important; } */
+.darkmode .widget { color: #fff !important; }
+.darkmode .widget .indicator { color: #fff !important; }
+.darkmode .widget .txt1 { color: #fff !important; }
+.darkmode .widget .txt2 { color: #fff !important; }
+.darkmode .widget .temp .number { color: #fff !important; }
+.darkmode .widget .temp .icon { color: #fff !important; }
+.darkmode .widget .item.money { color: #fff !important; }
+.darkmode .widget .item.money .amp-carousel-slide .price .number { color: #fff !important; }
+
+.darkmode .widget.sport { color: #fff !important; }
+.darkmode .widget.sport .match .game .team { color: #fff !important; }
+.darkmode .widget.sport .match .time { color: #fff !important; }
+
+.darkmode .block .card.sponsor .image .text { background-color: #202124 !important; }
+.darkmode .block .card.only .image .text { background-color: #202124 !important; }
+.darkmode .block .card.only .image .text .info span { color: #fff !important; }
+.darkmode .text h2 { color: #C0C0C0 !important; }
+.darkmode .text h2 a { color: #C0C0C0 !important; }
+
+.darkmode .block .card .image .tag { color: #fff !important; }
+.darkmode .icon-text-size-regular { color: #0070D7 !important; }
+.darkmode .article .articleHead .tools .left a { color: #0070D7 !important; }
+.darkmode .premium { color: #C0C0C0 !important; }
+/* .darkmode .premium .icon-star-regular { color: #D8AC0F !important; } */
+.darkmode .ptitle { color: #fff !important; }
+.darkmode .right a span { color: #808080 !important; }
+.darkmode .left span { color: #808080 !important; }
+.darkmode b { color: #808080 !important; }
+.darkmode footer span { color: #808080 !important; }
+.darkmode .brand .container img, svg { filter: invert(26%) sepia(71%) saturate(3141%) hue-rotate(195deg) brightness(94%) contrast(102%) !important; }
+.darkmode .widget .icon img, svg { filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(172deg) brightness(106%) contrast(101%) !important; }
+
+/* Funebres */
+.darkmode .cuerpo { background-color: #303234 !important; }
+.darkmode .media.agrupados { background-color: #202124 !important; }
+.darkmode .aviso { background-color: #202124 !important; }
+.darkmode .filtro { background-color: #202124 !important; }
+.darkmode .container .jumbotron { background-color: #202124 !important; }
+.darkmode .container > .navbar-header, .container > .navbar-collapse { background-color: #202124 !important; }
+.darkmode .box-side { background-color: #202124 !important; }
+
+
+
+/* Fotografia */
+.darkmode .share { background-color: #202124 !important; border: #808080; }
+.darkmode .share a.face { color: #344e86 !important; }
+.darkmode .share a.face:hover { color: #C0C0C0 !important; }
+.darkmode .share a.tw { color: #3ea1ec !important; }
+.darkmode .share a.tw:hover { color: #C0C0C0 !important; }
+.darkmode .share a.wp { color: #1e8f0f !important; }
+.darkmode .share a.wp:hover { color: #C0C0C0 !important; }
+.darkmode .share a.com { color: #0d74bf !important; }
+.darkmode .share a.com:hover { color: #C0C0C0 !important; }
+.darkmode .article .newsGal .slick-prev::before { color: #C0C0C0 !important; }
+.darkmode .article .newsGal .slick-next::before { color: #C0C0C0 !important; }
+.darkmode .track { background-color: #202124 !important; }
+.darkmode .article { background-color: #202124 !important; }
+.darkmode .news { background-color: #202124 !important; }
+.darkmode .video .hr { background-color: #202124 !important; }
+.darkmode .video .cardBody { background-color: #121212 !important; }
+.darkmode .article.video .moreCom span { color: #fff !important; }
+.darkmode .headroom { background-color: #202124 !important; }
+.darkmode .headroom .breadCrumb span { color: #fff !important; }
+
+/* Perfiles */
+.darkmode .news.profiles .profile { background-color: #292929 !important; }
+.darkmode .news .card { background-color: #292929 !important; }
+
+/*
+.darkmode .headroom--pinned { background-color: #202124 !important; }
+*/
+
+/* 3-dots animation */
+.loadingplus:after {
+  content: ' .';
+  animation: dots 1s steps(5, end) infinite;
+}
+
+/* 3-dots animation */
+.loadingplusdm:after {
+  content: ' .';
+  animation: whitedots 1s steps(5, end) infinite;
+}
+
+@keyframes dots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: black;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 black,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 black,
+      .5em 0 0 black;}}
+      
+@keyframes whitedots {
+  0%, 20% {
+    color: rgba(0,0,0,0);
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  40% {
+    color: white;
+    text-shadow:
+      .25em 0 0 rgba(0,0,0,0),
+      .5em 0 0 rgba(0,0,0,0);}
+  60% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 rgba(0,0,0,0);}
+  80%, 100% {
+    text-shadow:
+      .25em 0 0 white,
+      .5em 0 0 white;}}
