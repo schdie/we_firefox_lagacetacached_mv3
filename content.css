@@ -4,6 +4,7 @@ header .center .links a.suscribe { display: none !important; }
 #sidebar .suscription { display: none !important; }
 .paywall { display: none !important; }
 .body-blackout { display: none !important; }
+.widget.suscription { display: none !important; }
 /* Mobile */
 header.small .suscribeWidget { display: none !important; }
 /* run_at document_end */

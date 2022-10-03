@@ -11,17 +11,24 @@
   },
 
   "permissions": [
-    "storage", "webRequest", "webRequestBlocking", "*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"
+    "storage", "webRequest", "webRequestBlocking" 
   ],
   
-  "web_accessible_resources": [
-    "controller.js"
+  "host_permissions": [
+	"*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"
+	],
+  
+	"web_accessible_resources": [
+    {
+      "resources": [ "controller.js", "content.css", "content.js", "popup.html", "popup.css", "popup.js" ],
+      "matches": [ "*://*.lagaceta.com.ar/*" ]
+    }
   ],
 
   "background": {
-    "scripts": ["background.js"]
+		"scripts": ["background.js"]
   },
-  
+
   "page_action": {
 	"show_matches": ["*://*.lagaceta.com.ar/*"],
     "default_popup": "popup.html",

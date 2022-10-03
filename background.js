@@ -1,3 +1,5 @@
+//for this extension to work on mv3 the user needs to give host permissions manually on the add-on page.
+
 // On installation set darktheme default to false
 browser.runtime.onInstalled.addListener(() => {
 	const options = {};

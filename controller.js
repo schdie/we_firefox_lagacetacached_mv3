@@ -1,18 +1,24 @@
 function showloading() {
     if (document.getElementById("dloading")) document.getElementById("dloading").style.display = "block";
     else {
-        var e = document.createElement("div");
-        e.setAttribute("id", "dloading"), e.style.cssText = "width: 100%; height: 100%; z-index: 10009; top: 0px; left: 0px; background: rgba(255,255,255,.7); position: fixed; overflow: hidden; text-align: center";
-        var t = document.createElement("img");
-        t.setAttribute("src", URL_ACTUAL + "images/loading.gif"), t.setAttribute("style", "position:relative;top:45%;"), e.appendChild(t), document.getElementsByTagName("body")[0].appendChild(e)
+        var a = document.createElement("div");
+        a.setAttribute("id", "dloading"), a.style.cssText = "width: 100%; height: 100%; z-index: 10009; top: 0px; left: 0px; background: rgba(255,255,255,.7); position: fixed; overflow: hidden; text-align: center";
+        var b = document.createElement("img");
+        b.setAttribute("src", URL_ACTUAL + "images/loading.gif"), b.setAttribute("style", "position:relative;top:45%;"), a.appendChild(b), document.getElementsByTagName("body")[0].appendChild(a)
     }
 }
 
 function hideloading() {
     document.getElementById("dloading") && (document.getElementById("dloading").style.display = "none")
 }
+var wall_chequeado = !0
 
-var wall_chequeado = !1;
+function wallChequed(a) {
+    wall_chequeado || (dataLayer.push({
+        event: "SuscriptionVirtualPageview",
+        virtualPageURL: a
+    }), console.log("PageURL: " + a), wall_chequeado = !0)
+}
 
 function scrollBar() {
     var f = window.scrollY,
@@ -29,7 +35,7 @@ function scrollBar() {
         else {
             if (e) var j = 148;
             else var j = 1;
-            window.scrollY > j ? (a.classList.add("sticky"), b && a.classList.add("is-up"), e ? (document.body.style.paddingTop = "130px", g && (g.style.visibility = "hidden")) : b && (g.style.marginTop = "70px")) : (a.classList.remove("sticky"), b && a.classList.remove("is-up"), e ? (document.body.style.paddingTop = "0px", g && (g.style.visibility = "visible")) : b && (g.style.marginTop = "0px"))
+            window.scrollY > j ? (a.classList.add("sticky"), b && a.classList.add("is-up"), e ? (document.body.style.paddingTop = "130px", g && (g.style.visibility = "hidden")) : b && g && (g.style.marginTop = "70px")) : (a.classList.remove("sticky"), b && a.classList.remove("is-up"), e ? (document.body.style.paddingTop = "0px", g && (g.style.visibility = "visible")) : b && g && (g.style.marginTop = "0px"))
         }
         i > f ? (b || a.classList.remove("is-up"), c && (a.classList.add("esp"), document.querySelector("#brandHeader").src = URL_ACTUAL + "assets/2022/images/brandw.svg")) : f > i && (window.scrollY > h ? (b || a.classList.add("is-up"), c && (a.classList.remove("esp"), document.querySelector("#brandHeader").src = URL_ACTUAL + "assets/2022/images/brand.svg")) : (b || a.classList.remove("is-up"), c && (a.classList.add("esp"), document.querySelector("#brandHeader").src = URL_ACTUAL + "assets/2022/images/brandw.svg"))), f = i <= 0 ? 0 : i
     })
@@ -70,45 +76,36 @@ function searchNowAdvanced() {
 }
 
 function getGeneralData() {
-    var e = new XMLHttpRequest,
-        t = "origin=" + document.location.href;
-    e.open("POST", URL_ACTUAL + "ajax/getInfo", !0), e.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), e.send(t), e.onload = function() {
-        200 == e.status && (resp = JSON.parse(e.response), resp.status && ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), resp.is_logged ? callSignPW = setInterval(function() {
+    var a = new XMLHttpRequest,
+        b = "origin=" + document.location.href;
+    a.open("POST", URL_ACTUAL + "ajax/getInfo", !0), a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.send(b), a.onload = function() {
+        200 == a.status && ((resp = JSON.parse(a.response)).status && ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), callSignPW = resp.is_logged ? setInterval(function() {
             sendUserPW(!0, resp.user)
-        }, 500) : callSignPW = setInterval(function() {
-        //    sendUserPW(!1, !1)
-        }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber && (document.getElementById("side_suscription").style.display = "none")), document.getElementById("sidebar").style.display = "block")
+        }, 500) : setInterval(function() {
+            sendUserPW(!1, !1)
+        }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber && (document.getElementById("side_suscription").style.display = "none")), document.getElementById("sidebar").style.display = "block", document.querySelector("#header").classList.contains("is-home") && document.querySelectorAll(".data-partido").forEach(function(a) {
+            minxmin.ajaxCall(a)
+        }))
     }
 }
 
-function getGeneralDataFromArticle(e, t) {
-    var n = new XMLHttpRequest,
-        a = "id=" + e + "&type=" + t + "&origin=" + document.location.href;
-    n.open("POST", URL_ACTUAL + "ajax/getInfo", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send(a), n.onload = function() {
-        if (200 == n.status) {
-            if (resp = JSON.parse(n.response), resp.status) {
-                if ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber && (document.getElementById("side_suscription").style.display = "none")) {
-                    if (document.getElementById("articleContent").innerHTML = resp.viewContent, resp.ads_ajax) {
-                        var e = resp.ads_ajax;
-                        Array.isArray(e) && e.forEach(function(e, t, n) {
-                            "" != e && googletag.display(e)
-                        })
-                    }
-                    //lazyload(), resp.show_wall && (document.getElementsByTagName("html")[0].style = "overflow: hidden", document.getElementById("dilogComments").remove())
-                }
-                if (resp.share) document.querySelectorAll("span.js-share-count").forEach(function(e) {
-                    e.innerHTML = resp.share
-                });
-                else document.getElementById("j-ishare") && (document.getElementById("j-ishare").innerHTML = "");
-                if (resp.totalComments) document.querySelectorAll("span.js-comment-count").forEach(function(e) {
-                    e.innerHTML = resp.totalComments
-                });
-                else document.querySelectorAll("span.js-comment-count").forEach(function(e) {
-                    e.innerHTML = ""
-                })
-            }
-            document.getElementById("sidebar").style.display = "block"
-        }
+function getGeneralDataFromArticle(b, c) {
+    var a = new XMLHttpRequest,
+        d = "id=" + b + "&type=" + c + "&origin=" + document.location.href;
+    a.open("POST", URL_ACTUAL + "ajax/getInfo", !0), a.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), a.send(d), a.onload = function() {
+        200 == a.status && ((resp = JSON.parse(a.response)).status && ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), callSignPW = resp.is_logged ? setInterval(function() {
+            sendUserPW(!0, resp.user)
+        }, 500) : setInterval(function() {
+            sendUserPW(!1, !1)
+        }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (document.getElementById("articleContent").innerHTML = resp.viewContent, resp.ads_ajax && (callGtag = setInterval(function() {
+            displayGbanner(resp.ads_ajax)
+        }, 1e3)), lazyload(), resp.show_wall && (document.getElementsByTagName("html")[0].style = "overflow: visible")), resp.share ? document.querySelectorAll("span.js-share-count").forEach(function(a) {
+            a.innerHTML = resp.share
+        }) : document.getElementById("j-ishare") && (document.getElementById("j-ishare").innerHTML = ""), resp.totalComments ? resp.totalComments > 0 ? document.querySelectorAll("span.js-comment-count").forEach(function(a) {
+            a.innerHTML = resp.totalComments
+        }) : (document.getElementById("iCommentsUp").remove(), document.getElementById("iCommentsDown").remove()) : document.querySelectorAll("span.js-comment-count").forEach(function(a) {
+            a.innerHTML = ""
+        }), resp.show_wall || showWidgetList(b)), document.getElementById("sidebar").style.display = "block")
     }
 }
 
@@ -136,6 +133,30 @@ function closeAlert() {
     a.open("POST", URL_ACTUAL + "ajax/close_zocalo", !0), a.send(), a.onload = function() {
         a.status
     }, document.getElementById("alertHead").style.display = "none"
+}
+
+function sendUserPW(b, a) {
+    "undefined" != typeof paywall && void 0 !== paywall.auth && (b ? paywall.auth.user() ? a && paywall.auth.user().id != a.id && paywall.signIn({
+        id: a.id,
+        email: a.email,
+        first_name: a.nombre,
+        last_name: a.apellido,
+        avatar: a.avatar,
+        identification_type: a.identification_type,
+        identification_number: a.identification_number,
+        phone: a.celular,
+        roles: a.roles
+    }) : paywall.signIn({
+        id: a.id,
+        email: a.email,
+        first_name: a.nombre,
+        last_name: a.apellido,
+        avatar: a.avatar,
+        identification_type: a.identification_type,
+        identification_number: a.identification_number,
+        phone: a.celular,
+        roles: a.roles
+    }) : paywall.auth.isLogged() && paywall.signOff(), clearInterval(callSignPW))
 }
 
 function sendOnesignal(b, c, d, e, f) {
@@ -180,7 +201,6 @@ function resize(a) {
         b.status
     }
 }
-
 document.addEventListener && lazyload(), document.getElementById("textSearch").addEventListener("keyup", function(a) {
     13 == (a.keyCode || a.which) && searchNow()
 });
@@ -303,9 +323,9 @@ function hideZoc() {
     document.getElementsByClassName("js-zocalo")[0].style.display = "none"
 }
 
-function copyToClipboard(e) {
-    var t = document.createElement("textarea");
-    t.value = e, document.body.appendChild(t), t.select(), document.execCommand("Copy"), t.remove(), closeModal("mshare")
+function copyToClipboard(b) {
+    var a = document.createElement("textarea");
+    a.value = b, document.body.appendChild(a), a.select(), document.execCommand("Copy"), a.remove(), closeModal("mshare")
 }
 
 function showModal(c) {
@@ -326,7 +346,7 @@ function closeModal(a) {
         c = document.querySelector(".body-blackout");
     b.classList.remove("is--visible"), c.classList.remove("is-blacked-out"), document.getElementsByTagName("html")[0].style.overflow = "auto", document.getElementById("modal-content").innerHTML = ""
 }
-
+/*
 function checkCardExpDate() {
     paywall.queue.push(["invoke", "viewSubscriptionData", function(a) {
         if (a && a.is_active && a.card && a.card.expiration_date) {
@@ -342,7 +362,7 @@ function checkCardExpDate() {
         }
     }])
 }
-
+*/
 function showWidgetList(c) {
     if (document.getElementById("listID") && document.getElementById("lgwid") && 0 == document.getElementById("lgwid").innerText.length) {
         var b = document.getElementById("listID").value;
@@ -361,7 +381,7 @@ function showWidgetList(c) {
         }
     }
 }
-
+/*
 function showFormWidgetSubscribe(d, b, c) {
     showloading();
     var a = new XMLHttpRequest;
@@ -376,7 +396,7 @@ function showFormWidgetSubscribe(d, b, c) {
         hideloading()
     }
 }
-
+*/
 function suscLista(a) {
     showloading(), document.getElementById("msj_errorsus").innerHTML = "";
     var b = document.getElementById(a);
@@ -414,7 +434,7 @@ if (document.addEventListener) {
         "nota" == b && (a = c[d + 1])
     }), a > 0 ? getGeneralDataFromArticle(a, 32) : getGeneralData()
 }
-
+/*
 function agregarBanner(f, a, g) {
     if (a.height) var d = a.height;
     else var d = "250";
@@ -434,7 +454,7 @@ function agregarBanner(f, a, g) {
         googletag.pubads().addEventListener("slotRenderEnded", function(a) {}), googletag.display("adslot" + a.id), googletag.pubads().refresh([b])
     })
 }
-
+*/
 function bikers(b) {
     showloading();
     var c = document.getElementById(b);
