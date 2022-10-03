@@ -3,7 +3,9 @@ body {
 }
 
 label {
+	display: block;
 	margin-left: 5px;
+	margin-bottom: 11px;
 	font-size: 14px;
 }
 
@@ -36,6 +38,10 @@ label {
     display: none;
     visibility: hidden; }
   .cl-switch .switcher {
+		/* right aligned */
+		float: right;
+		clear: both;
+    /**/
     display: inline-block;
     border-radius: 100px;
     width: 35px;

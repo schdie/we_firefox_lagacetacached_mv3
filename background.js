@@ -1,4 +1,8 @@
-//for this extension to work on mv3 the user needs to give host permissions manually on the add-on page.
+// TO-DO for mv3
+// page_action may get merged into action sometime in the future before mv3 public release
+// regularly check whatever mozilla decides to do with host permissions but in the meantime:
+// on startup if current host permissions are not granted ask them (if we didn't before)
+// save everything in storage and adjust the page action popup toggle accordingly
 
 // On installation set darktheme default to false
 browser.runtime.onInstalled.addListener(() => {
@@ -42,4 +46,39 @@ browser.webRequest.onBeforeRequest.addListener(
 	  "*://*.lagaceta.com.ar/assets/2022/js/controller.min.*"], types:["script"],
   },
   ["blocking"]
+);
+
+// Get the google cache version of the note
+browser.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		// Avoid main site
+		if (request.cpag != "https://www.lagaceta.com.ar/") {
+			// Construct cached content URL
+			var ccUrl = 'https://webcache.googleusercontent.com/search?q=cache:' + request.cpag;
+			// Get html content from ccUrl
+			fetch(ccUrl)
+				.then(
+				function(response) {
+					console.log('redirected?: ' + response.redirected);
+					if (response.redirected === false){
+						if (response.status === 200) {
+							// Response return since status was ok
+							return response.text();
+						} else {
+							// Return the status and do the logic in content.js
+							return response.status;
+						}
+					} else {
+						// We are being redirected, possibly to a captcha...
+						return "REDIRECTED";
+					}
+				}
+				)
+				.then(response => sendResponse({farewell: response}))
+				.catch(function(err) {
+					console.log('Fetch Error :-S', err);
+				});
+			return true;			
+		}
+	}
 );
