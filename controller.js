@@ -1,3 +1,4 @@
+/* v2.1 */
 function showloading() {
     if (document.getElementById("dloading")) document.getElementById("dloading").style.display = "block";
     else {
@@ -99,13 +100,13 @@ function getGeneralDataFromArticle(b, c) {
             sendUserPW(!1, !1)
         }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (document.getElementById("articleContent").innerHTML = resp.viewContent, resp.ads_ajax && (callGtag = setInterval(function() {
             displayGbanner(resp.ads_ajax)
-        }, 1e3)), lazyload(), resp.show_wall && (document.getElementsByTagName("html")[0].style = "overflow: visible")), resp.share ? document.querySelectorAll("span.js-share-count").forEach(function(a) {
+        }, 1e3)), lazyload(), (document.getElementsByTagName("html")[0].style = "overflow: visible")), resp.share ? document.querySelectorAll("span.js-share-count").forEach(function(a) {
             a.innerHTML = resp.share
         }) : document.getElementById("j-ishare") && (document.getElementById("j-ishare").innerHTML = ""), resp.totalComments ? resp.totalComments > 0 ? document.querySelectorAll("span.js-comment-count").forEach(function(a) {
             a.innerHTML = resp.totalComments
         }) : (document.getElementById("iCommentsUp").remove(), document.getElementById("iCommentsDown").remove()) : document.querySelectorAll("span.js-comment-count").forEach(function(a) {
             a.innerHTML = ""
-        }), resp.show_wall || showWidgetList(b)), document.getElementById("sidebar").style.display = "block")
+        }) || showWidgetList(b)), document.getElementById("sidebar").style.display = "block")
     }
 }
 
@@ -328,6 +329,7 @@ function copyToClipboard(b) {
     a.value = b, document.body.appendChild(a), a.select(), document.execCommand("Copy"), a.remove(), closeModal("mshare")
 }
 
+/*
 function showModal(c) {
     let a = document.getElementById(c),
         e = document.getElementById("modal-close"),
@@ -346,6 +348,7 @@ function closeModal(a) {
         c = document.querySelector(".body-blackout");
     b.classList.remove("is--visible"), c.classList.remove("is-blacked-out"), document.getElementsByTagName("html")[0].style.overflow = "auto", document.getElementById("modal-content").innerHTML = ""
 }
+*/
 /*
 function checkCardExpDate() {
     paywall.queue.push(["invoke", "viewSubscriptionData", function(a) {

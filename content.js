@@ -85,7 +85,7 @@ getCached(function(message) {
 			const premium = document.getElementsByClassName("article premium")[0];
 			const especialpremium = document.getElementsByClassName("especial")[0];
 			const edupremium = document.getElementsByClassName("edu")[0];
-			console.log("premium: " + premium + " especial: " + especialpremium + "edu: " + edupremium);
+			console.log("premium: " + premium + " especial: " + especialpremium + " edu: " + edupremium);
 			if (premium) {
 				console.log("La nota es Premium...");
 					// Check for 404
@@ -159,6 +159,7 @@ getCached(function(message) {
 							}
 						}
 						// Inject modified cached div
+						//console.log('cached div: ' + cachedDiv.innerHTML);
 						document.getElementById('articleContent').innerHTML = cachedDiv.innerHTML;
 					}
 			} else {

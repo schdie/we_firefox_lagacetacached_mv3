@@ -4,20 +4,26 @@
 // on startup if current host permissions are not granted ask them (if we didn't before)
 // save everything in storage and adjust the page action popup toggle accordingly
 
-// On installation set darktheme default to false
+// on startup check permissions
+// Extension permissions are:
+// "webRequest", "tabs", "*://*.mozilla.org/*"
+
+
+// On installation set options default to false
 browser.runtime.onInstalled.addListener(() => {
 	const options = {};
 	browser.storage.local.get('options', (data) => {
-		// Set darktheme for the first time
+		// Set options for the first time
 		if (!options){
 			Object.assign(options, data.options);
+			// dark mode
 			options.dmToggle = 'false';
 			browser.storage.local.set({options});
 		}
 	});	
 });
 
-//block some scripts
+// block some scripts
 function cancel(requestDetails) {
   //console.log("Canceling: " + requestDetails.url);
   return {cancel: true};
@@ -32,7 +38,7 @@ browser.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
-//redirect some scripts
+// redirect some scripts
 function redirect(requestDetails) {
   //console.log("Redirecting: " + requestDetails.url);
   return {
