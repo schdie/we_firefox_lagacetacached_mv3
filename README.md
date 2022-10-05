@@ -1,5 +1,6 @@
-# firefox webextension
-## LG cached
-### mv3
-1. retrieves cached content from google's server if available.
-2. dark theme mode implemented with custom local css on the fly.
+## firefox webextension
+### **LG cached**
+### Manifest *v3*
+**Small extension to add the following functionality to lagaceta.com.ar:**
+- retrieves cached content from google's server (if available) on pages with intrusive JS/CSS.
+- dark theme mode on the fly.
