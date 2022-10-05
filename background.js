@@ -4,10 +4,17 @@
 // on startup if current host permissions are not granted ask them (if we didn't before)
 // save everything in storage and adjust the page action popup toggle accordingly
 
-// on startup check permissions
-// Extension permissions are:
-// "webRequest", "tabs", "*://*.mozilla.org/*"
+// on permission change refresh the active tab
+browser.permissions.onAdded.addListener(handleAdded);
 
+function handleAdded(permissions) {
+	browser.tabs.query({ active: true, currentWindow: true, lastFocusedWindow: true }, function (tabs) {
+    // reload the tab if not in the addons page
+    if (tabs[0].url) {
+			browser.tabs.reload();
+		}       
+	});
+}
 
 // On installation set options default to false
 browser.runtime.onInstalled.addListener(() => {

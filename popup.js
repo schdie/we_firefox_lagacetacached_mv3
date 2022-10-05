@@ -20,7 +20,7 @@ let testPermissions = {
 };
 
 browser.permissions.contains(testPermissions).then((result) => {
-  console.log("permisos????: " + result);    // true
+  console.log("check permisos al cargar: " + result);    // true
   if (result) {
 		optionsForm.pmToggle.checked = true;
 	} else {
