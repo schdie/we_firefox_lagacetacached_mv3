@@ -1,8 +1,7 @@
 // TO-DO for mv3
 // page_action may get merged into action sometime in the future before mv3 public release
-// regularly check whatever mozilla decides to do with host permissions but in the meantime:
-// on startup if current host permissions are not granted ask them (if we didn't before)
-// save everything in storage and adjust the page action popup toggle accordingly
+// regularly check whatever mozilla decides to do with host permissions for their mv3 implementation
+// depending on that maybe add a user notification on load if host permissions are not granted
 
 // on permission change refresh the active tab
 browser.permissions.onAdded.addListener(handleAdded);
