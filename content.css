@@ -29,10 +29,14 @@ div[class^="add big topbanner"] {
 .darkmode .article .articleHead .breadcrumb a .icon-angle-right-regular, .article .articleHead .breadcrumb span .icon-angle-right-regular { color: #C0C0C0 !important; }
 .darkmode p { color: #F5F5F5 !important; }
 /* top right comments and shares */
-.darkmode .icon-share-light { color: #808080 !important; }
-.darkmode .js-share-count { color: #808080 !important; }
-.darkmode .icon-comments-light { color: #808080 !important; }
-.darkmode .js-comment-count { color: #808080 !important; }
+.darkmode .article .articleHead .tools .right .icon-share-light { color: #808080 !important; }
+.darkmode .article .articleHead .tools .right .js-share-count { color: #808080 !important; }
+.darkmode .article .articleHead .tools .right .icon-comments-light { color: #808080 !important; }
+.darkmode .article .articleHead .tools .right .js-comment-count { color: #808080 !important; }
+/* bottom right comments*/
+.darkmode .article .articleBody .tools .right .icon-comments-light { color: #808080 !important; }
+.darkmode .article .articleBody .tools .right .js-comment-count { color: #808080 !important; }
+.darkmode .article .articleBody .tools .right span { color: #808080 !important; }
 /* top left fb wp share */ 
 .darkmode .icon-facebook-brands { color: #0070D7 !important; }
 .darkmode .icon-whatsapp-brands { color: #0070D7 !important; }
@@ -55,7 +59,11 @@ div[class^="add big topbanner"] {
 .darkmode .widget .temp .number { color: #fff !important; }
 .darkmode .widget .temp .icon { color: #fff !important; }
 .darkmode .widget .item.money { color: #fff !important; }
+.darkmode .widget .item.money .amp-carousel-button-prev { filter: invert(100%) !important; }
+.darkmode .widget .item.money .amp-carousel-button-next { filter: invert(100%) !important; }
 .darkmode .widget .item.money .amp-carousel-slide .price .number { color: #fff !important; }
+.darkmode .widget .left .txt { color: #fff !important; }
+.darkmode .widget .left .icon-envelope-open-text-thin::before { color: #fff !important; }
 
 .darkmode .widget.sport { color: #fff !important; }
 .darkmode .widget.sport .match .game .team { color: #fff !important; }
