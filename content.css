@@ -15,6 +15,8 @@ div[class^="add big topbanner"] {
 .add { background: none !important; }
 
 /* dark mode */
+.darkmode .icon-bars-regular::before { color: #0070D7 !important; }
+.darkmode header .center .left span { color: #0070D7 !important; }
 .darkmode header { background-color: #202124 !important; }
 .darkmode header .center { background-color: #202124 !important; }
 .darkmode body { background-color: #202124 !important; }
