@@ -143,7 +143,7 @@ function getGeneralDataFromArticle(e, t) {
 			sendUserPW(!0, resp.user)
 		}, 500) : setInterval(function() {
 			sendUserPW(!1, !1)
-		}, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (document.getElementById("articleContent").innerHTML = resp.viewContent, resp.ads_ajax && setTimeout(function() {
+		}, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (resp.ads_ajax && setTimeout(function() {
 			callGtag = setInterval(function() {
 				displayGbanner(resp.ads_ajax)
 			}, 1e3)
