@@ -30,6 +30,15 @@ div[class^="add big topbanner"] {
 
 .darkmode .article .articleHead .breadcrumb a .icon-angle-right-regular, .article .articleHead .breadcrumb span .icon-angle-right-regular { color: #C0C0C0 !important; }
 .darkmode p { color: #F5F5F5 !important; }
+
+/* search */
+.darkmode .block .filter span { color: #808080 !important; }
+
+/* encuesta */
+.darkmode .article .articleBody .poll .item { color: #808080 !important; }
+.darkmode .article .articleBody .poll .item .number { color: #808080 !important; }
+.darkmode .article .articleBody .poll span.votes { color: #808080 !important; }
+
 /* top right comments and shares */
 .darkmode .article .articleHead .tools .right .icon-share-light { color: #808080 !important; }
 .darkmode .article .articleHead .tools .right .js-share-count { color: #808080 !important; }
