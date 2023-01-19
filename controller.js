@@ -156,7 +156,7 @@ function getGeneralDataFromArticle(e, t) {
 		}), showWidgetList(e)), document.getElementById("sidebar").style.display = "block")
 	}
 }
-
+/*
 function displayGbanner(e) {
     if (googletag) {
         var t = e;
@@ -165,7 +165,7 @@ function displayGbanner(e) {
         }), clearInterval(callGtag)
     }
 }
-
+*/
 function close(e) {
     showloading();
     var t = new XMLHttpRequest;
@@ -461,7 +461,7 @@ function suscLista(e) {
         hideloading(), document.getElementById("msj_errorsus").innerHTML = "Se produjo un error inesperado. Intentelo nuevamente."
     })
 }
-
+/*
 function pushEventGTM(e, t, n, i, s) {
     dataLayer.push({
         event: e,
@@ -470,7 +470,7 @@ function pushEventGTM(e, t, n, i, s) {
         eventLabel: i,
         eventValue: s
     })
-}
+}*/
 if (document.addEventListener) {
     let e = document.location,
         t = e.pathname.split("/");
