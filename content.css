@@ -27,6 +27,11 @@ div[class^="add big topbanner"] {
 .darkmode h4 { color: #fff !important; }
 .darkmode a { color: #fff !important; }
 .darkmode .dblue { color: #fff !important; }
+.darkmode .block .card.program .text span { background-color: #808080 !important; }
+.block .card.program .text .taglive { color: #808080 !important; }
+.block .timeline .card .text .time { color: #808080 !important; }
+/* remove the awful line below the top brand banner on darkmode */
+.darkmode header.section { margin-bottom: -0.1rem !important; }
 
 .darkmode .article .articleHead .breadcrumb a .icon-angle-right-regular, .article .articleHead .breadcrumb span .icon-angle-right-regular { color: #C0C0C0 !important; }
 .darkmode p { color: #F5F5F5 !important; }
@@ -62,7 +67,7 @@ div[class^="add big topbanner"] {
 .darkmode .dilog-h2 { color: #fff !important; }
 .darkmode .dilog-p { color: #F5F5F5 !important; }
 .darkmode .icon-star-solid { color: #D8AC0F !important; }
-.darkmode .text .tag { color: #fff !important; } */
+.darkmode .text .tag { color: #fff !important; }
 .darkmode .widget { color: #fff !important; }
 .darkmode .widget .indicator { color: #fff !important; }
 .darkmode .widget .txt1 { color: #fff !important; }
