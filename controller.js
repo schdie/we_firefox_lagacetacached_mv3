@@ -1,4 +1,4 @@
-/* v2.3 */
+/* v2.8 */
 function showloading() {
     if (document.getElementById("dloading")) document.getElementById("dloading").style.display = "block";
     else {
@@ -37,7 +37,8 @@ function scrollBar() {
         else {
             if (a) var d = 148;
             else var d = 1;
-            window.scrollY > d ? (t.classList.add("sticky"), o && t.classList.add("is-up"), a ? (document.body.style.paddingTop = "130px", n && (n.style.visibility = "hidden")) : o && n && (n.style.marginTop = "70px")) : (t.classList.remove("sticky"), o && t.classList.remove("is-up"), a ? (document.body.style.paddingTop = "0px", n && (n.style.visibility = "visible")) : o && n && (n.style.marginTop = "0px"))
+            // remove the header on scrolling because why not
+            //window.scrollY > d ? (t.classList.add("sticky"), o && t.classList.add("is-up"), a ? (document.body.style.paddingTop = "130px", n && (n.style.visibility = "hidden")) : o && n && (n.style.marginTop = "70px")) : (t.classList.remove("sticky"), o && t.classList.remove("is-up"), a ? (document.body.style.paddingTop = "0px", n && (n.style.visibility = "visible")) : o && n && (n.style.marginTop = "0px"))
         }
         r > e ? (o || t.classList.remove("is-up"), i && (t.classList.add("esp"), document.querySelector("#brandHeader").src = URL_ACTUAL + "assets/2022/images/brandw.svg")) : e > r && (window.scrollY > l ? (o || t.classList.add("is-up"), i && (t.classList.remove("esp"), document.querySelector("#brandHeader").src = URL_ACTUAL + "assets/2022/images/brand.svg")) : (o || t.classList.remove("is-up"), i && (t.classList.add("esp"), document.querySelector("#brandHeader").src = URL_ACTUAL + "assets/2022/images/brandw.svg"))), e = r <= 0 ? 0 : r
     })
@@ -519,3 +520,33 @@ function bikers(e) {
         200 == n.status && (resp = JSON.parse(n.response)).status && (document.getElementById("result").innerHTML = resp.view), hideloading()
     }
 }
+
+/* new from 2.3/4 to 2.8 - not useful
+function sendInfoMf(e, t) {
+    readSess("lg_mf_" + e) || window.marfeel.cmd.push(["compass", function(n) {
+        n.setSiteUserId(e), t ? n.setUserType(3) : n.setUserType(2), setSess("lg_mf_" + e, 1, 60, ".lagaceta.com.ar")
+    }])
+}
+
+function setSess(e, t, n, s) {
+    if ("https:" == document.location.protocol) var i = "; sameSite=None; secure";
+    else var i = "";
+    var a = new Date;
+    a.setTime(a.getTime() + 864e5 * n);
+    var o = "expires=" + a.toGMTString();
+    document.cookie = e + "=" + t + "; " + o + "; path=/; domain=" + s + i
+}
+
+function readSess(e) {
+    for (var t = e + "=", n = document.cookie.split(";"), s = 0; s < n.length; s++) {
+        for (var i = n[s];
+            " " == i.charAt(0);) i = i.substring(1, i.length);
+        if (0 == i.indexOf(t)) return i.substring(t.length, i.length)
+    }
+    return null
+}
+
+function hideZocalo() {
+    document.getElementById("gpt_unit_/1418175/LGT_Zocalo_Google_0") ? (googletag.destroySlots([anchor_slot]), clearInterval(callHideZocalo)) : document.getElementById("gpt_unit_/1418175/LGTM_Zocalo_Google_0") && (googletag.destroySlots([anchor_slot]), clearInterval(callHideZocalo))
+}
+*/
