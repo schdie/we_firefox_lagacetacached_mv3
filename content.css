@@ -36,6 +36,9 @@ div[class^="add big topbanner"] {
 .darkmode .article .articleHead .breadcrumb a .icon-angle-right-regular, .article .articleHead .breadcrumb span .icon-angle-right-regular { color: #C0C0C0 !important; }
 .darkmode p { color: #F5F5F5 !important; }
 
+/* elecciones */
+.widget.election .amp-carousel-slide .contSlider .text .votes h3 span, .widget.election .candInt .contSlider .text .votes h3 span { color: #fff !important; }
+
 /* search */
 .darkmode .block .filter span { color: #808080 !important; }
 
@@ -103,6 +106,7 @@ div[class^="add big topbanner"] {
 .darkmode footer span { color: #808080 !important; }
 .darkmode .brand .container img, svg { filter: invert(26%) sepia(71%) saturate(3141%) hue-rotate(195deg) brightness(94%) contrast(102%) !important; }
 .darkmode .widget .icon img, svg { filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(172deg) brightness(106%) contrast(101%) !important; }
+.darkmode .head img, svg { filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(172deg) brightness(106%) contrast(101%) !important; }
 
 /* Funebres */
 .darkmode .cuerpo { background-color: #303234 !important; }
@@ -112,8 +116,6 @@ div[class^="add big topbanner"] {
 .darkmode .container .jumbotron { background-color: #202124 !important; }
 .darkmode .container > .navbar-header, .container > .navbar-collapse { background-color: #202124 !important; }
 .darkmode .box-side { background-color: #202124 !important; }
-
-
 
 /* Fotografia */
 .darkmode .share { background-color: #202124 !important; border: #808080; }
