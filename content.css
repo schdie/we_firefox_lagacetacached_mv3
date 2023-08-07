@@ -14,6 +14,10 @@ div[class^="add big topbanner"] {
 }
 .add { background: none !important; }
 
+.add.big {
+  display: none !important;
+}
+
 /* dark mode */
 .darkmode .icon-bars-regular::before { color: #0070D7 !important; }
 .darkmode header .center .left span { color: #0070D7 !important; }
@@ -28,8 +32,8 @@ div[class^="add big topbanner"] {
 .darkmode a { color: #fff !important; }
 .darkmode .dblue { color: #fff !important; }
 .darkmode .block .card.program .text span { background-color: #808080 !important; }
-.block .card.program .text .taglive { color: #808080 !important; }
-.block .timeline .card .text .time { color: #808080 !important; }
+.darkmode .block .card.program .text .taglive { color: #808080 !important; }
+.darkmode .block .timeline .card .text .time { color: #808080 !important; }
 /* remove the awful line below the top brand banner on darkmode */
 .darkmode header.section { margin-bottom: -0.1rem !important; }
 
@@ -37,7 +41,7 @@ div[class^="add big topbanner"] {
 .darkmode p { color: #F5F5F5 !important; }
 
 /* elecciones */
-.widget.election .amp-carousel-slide .contSlider .text .votes h3 span, .widget.election .candInt .contSlider .text .votes h3 span { color: #fff !important; }
+.darkmode .widget.election .amp-carousel-slide .contSlider .text .votes h3 span, .widget.election .candInt .contSlider .text .votes h3 span { color: #fff !important; }
 
 /* search */
 .darkmode .block .filter span { color: #808080 !important; }
