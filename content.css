@@ -42,6 +42,8 @@ div[class^="add big topbanner"] {
 
 /* elecciones */
 .darkmode .widget.election .amp-carousel-slide .contSlider .text .votes h3 span, .widget.election .candInt .contSlider .text .votes h3 span { color: #fff !important; }
+.darkmode .widget.countDown img, svg { filter: invert(1) !important; }
+.darkmode .sectionHead img, svg { filter: invert(1) !important; }
 
 /* search */
 .darkmode .block .filter span { color: #808080 !important; }
