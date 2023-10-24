@@ -45,6 +45,10 @@ div[class^="add big topbanner"] {
 .darkmode .widget.countDown img, svg { filter: invert(1) !important; }
 .darkmode .sectionHead img, svg { filter: invert(1) !important; }
 .darkmode .block .card.elec .head { color: #fff !important; }
+.darkmode .bars .partido, .bars .progress, .h2tit { color: #fff !important; }
+.darkmode .refa { color: #fff !important; }
+.darkmode .tablelista .table-hover > tbody > tr, .tablelista .table-light { color: #fff !important; }
+.darkmode .tablelista .table-light { background: #808080 !important; }
 
 /* search */
 .darkmode .block .filter span { color: #808080 !important; }
