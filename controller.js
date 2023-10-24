@@ -1,4 +1,4 @@
-/* v2.8 */
+/* v3.0 */
 function showloading() {
     if (document.getElementById("dloading")) document.getElementById("dloading").style.display = "block";
     else {
@@ -482,15 +482,15 @@ if (document.addEventListener) {
 }
 /* og
 function agregarBanner(e, t, n) {
-    if (t.height) var i = t.height;
-    else var i = "250";
-    if (t.width) var s = t.width;
+    if (t.height) var s = t.height;
     else var s = "250";
+    if (t.width) var i = t.width;
+    else var i = "250";
     t.range && t.range;
     var a = document.createElement("div");
     a.setAttribute("class", "col-12 add");
     var o = document.createElement("div");
-    o.setAttribute("id", "adslot" + t.id), o.setAttribute("style", "min-height:" + i + "px; min-width:" + s + "px; text-align:left; overflow-x:hidden; justify-content:left; margin-left:auto; margin-right:auto;"), a.appendChild(o), document.getElementById(e).appendChild(a), googletag.cmd.push(function() {
+    o.setAttribute("id", "adslot" + t.id), o.setAttribute("style", "min-height:" + s + "px; min-width:" + i + "px; text-align:left; overflow-x:hidden; justify-content:left; margin-left:auto; margin-right:auto;"), a.appendChild(o), document.getElementById(e).appendChild(a), googletag.cmd.push(function() {
         if (googletag.pubads().setCentering(!0), googletag.enableServices(), n) var e = googletag.defineSlot("/1418175/" + t.slot, [300, 250], "adslot" + t.id).addService(googletag.pubads());
         else var e = googletag.defineSlot("/1418175/" + t.slot, [
             [300, 250],
@@ -520,8 +520,7 @@ function bikers(e) {
         200 == n.status && (resp = JSON.parse(n.response)).status && (document.getElementById("result").innerHTML = resp.view), hideloading()
     }
 }
-
-/* new from 2.3/4 to 2.8 - not useful
+/* new from 2.3/4 to 3.0 - not useful
 function sendInfoMf(e, t) {
     readSess("lg_mf_" + e) || window.marfeel.cmd.push(["compass", function(n) {
         n.setSiteUserId(e), t ? n.setUserType(3) : n.setUserType(2), setSess("lg_mf_" + e, 1, 60, ".lagaceta.com.ar")
@@ -550,3 +549,28 @@ function hideZocalo() {
     document.getElementById("gpt_unit_/1418175/LGT_Zocalo_Google_0") ? (googletag.destroySlots([anchor_slot]), clearInterval(callHideZocalo)) : document.getElementById("gpt_unit_/1418175/LGTM_Zocalo_Google_0") && (googletag.destroySlots([anchor_slot]), clearInterval(callHideZocalo))
 }
 */
+function elecciones2023() {
+    showloading();
+    var e = document.getElementById("municipio"),
+        t = new XMLHttpRequest,
+        n = "municipio_id=" + e.value;
+    t.open("POST", URL_ACTUAL + "widget/elecc2023_int", !0), t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), t.send(n), t.onload = function() {
+        200 == t.status && (resp = JSON.parse(t.response)).status && (document.getElementById("cont_int").innerHTML = resp.view), hideloading()
+    }
+}
+
+function elecciones2023_paso(e) {
+    showloading();
+    var t = new XMLHttpRequest;
+    t.open("POST", URL_ACTUAL + "widget/elecc2023_paso", !0), t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), t.send("categoria_id=" + e), t.onload = function() {
+        200 == t.status && (resp = JSON.parse(t.response)).status && (document.getElementById("res_partidos").innerHTML = resp.view, 1 == e ? (document.getElementById("cat_2").classList.remove("active"), document.getElementById("cat_1").classList.add("active")) : (document.getElementById("cat_1").classList.remove("active"), document.getElementById("cat_2").classList.add("active"))), hideloading()
+    }
+}
+
+function elecciones2023_grales(e, t, n) {
+    showloading();
+    var s = new XMLHttpRequest;
+    s.open("POST", URL_ACTUAL + "widget/elecc2023_gral", !0), s.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), s.send("categoria_id=" + e + "&distrito_id=" + t + "&tipo=" + n), s.onload = function() {
+        200 == s.status && (resp = JSON.parse(s.response)).status && (document.getElementById(resp.content_id).innerHTML = resp.view, "bar" == n ? document.getElementById("distritos1").value = t : 2 == e && (document.getElementById("distritos2").value = t)), hideloading()
+    }
+}
