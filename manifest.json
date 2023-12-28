@@ -1,8 +1,9 @@
 {
-  "description": "Cached content retrieval for lagaceta.com.ar",
+  "description": "Recuperación de contenido en el cache de Google para lagaceta.com.ar",
   "manifest_version": 3,
   "name": "LG Cached",
-  "version": "3.32",
+  "homepage_url": "https://github.com/schdie/we_firefox_lagacetacached_mv3",
+  "version": "3.36",
   
   "icons": {
     "48": "icons/48.png",
@@ -20,18 +21,18 @@
   
 	"web_accessible_resources": [
     {
-      "resources": [ "controller.js", "content.css", "content.js", "popup.html", "popup.css", "popup.js" ],
+      "resources": [ "js/controller.js", "css/content.css", "js/content.js", "popup/popup.html", "popup/popup.css", "popup/popup.js" ],
       "matches": [ "*://*.lagaceta.com.ar/*" ]
     }
   ],
 
   "background": {
-		"scripts": ["background.js"]
+		"scripts": ["js/background.js"]
   },
 
   "page_action": {
 	"show_matches": ["*://*.lagaceta.com.ar/*"],
-    "default_popup": "popup.html",
+    "default_popup": "popup/popup.html",
 		"default_icon": {
       "48": "/icons/48.png",
       "96": "/icons/96.png",
@@ -42,8 +43,8 @@
   "content_scripts": [
   {
     "matches": ["*://*.lagaceta.com.ar/*"],
-    "css": ["content.css"],
-    "js": ["content.js"],
+    "css": ["css/content.css"],
+    "js": ["js/content.js"],
     "run_at": "document_start"
     }
   ],
@@ -52,7 +53,9 @@
     "gecko": {
 			"id": "{400be594-34dd-4ae0-a0a4-20b5eca8473c}",
       "strict_min_version": "109.0"
-    }
+    },
+    "gecko_android": {
+			"strict_min_version": "121.0"
+		}
   }
-  
 }

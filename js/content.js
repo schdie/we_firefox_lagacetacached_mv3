@@ -1,16 +1,32 @@
 const options = {};
 
-// Get darkmode state from storage and apply it if needed
+// detect default system color-scheme
+function detectSystemTheme() {
+	if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
+		console.log('LGC: system dark theme detected');
+		document.documentElement.classList.add('darkmode');
+	} else {
+		console.log('LGC: system light theme detected');
+		document.documentElement.classList.remove('darkmode');
+	}
+}
+
+// executing it first no matter what allows to minimize FOUC
+detectSystemTheme();
+
+// get darkmode state from storage and change/apply it if needed
 browser.storage.local.get('options', (data) => {
 	Object.assign(options, data.options);
-		if (options.dmToggle === true) {
+		if (options.dmToggle == "true") {
 			document.documentElement.classList.add('darkmode');
-		} else if (options.dmToggle === false) {
+		} else if (options.dmToggle == "false") {
 			document.documentElement.classList.remove('darkmode');
+		} else {
+			detectSystemTheme();
 		}
 });
 
-// Watch for changes to the user's darkmode setting & apply them on the fly
+// watch for changes to the user's darkmode setting & apply them on the fly
 browser.storage.onChanged.addListener((changes, area) => {
 	if (area === 'local' && changes.options?.newValue) {
 		browser.storage.local.get('options', (data) => {
@@ -19,12 +35,14 @@ browser.storage.onChanged.addListener((changes, area) => {
 					document.documentElement.classList.add('darkmode');
 				} else if (options.dmToggle === false) {
 					document.documentElement.classList.remove('darkmode');
+				} else {
+					detectSystemTheme();
 				}
 		});
 	}
 });
 
-// Loading disclaimer on premium article plus: faster than readystate
+// loading disclaimer on premium article plus: faster than readystate
 document.addEventListener('DOMContentLoaded', fireContentLoadedEvent, false);
 
 function fireContentLoadedEvent () {
@@ -54,40 +72,22 @@ function fireContentLoadedEvent () {
 	}
 }
 
-// Request message to service worker on cached premium article
-async function getCached( callback ){
-	// Needed because run_at is set to start (because of darktheme and FOUC)
-	document.addEventListener('readystatechange', event => {
-		// Wait until we can read the html we want, should be complete insted of interactive but *it works tm*
-		if (event.target.readyState === 'interactive') {
-			// Only request on premium article
-			const premium = document.getElementsByClassName("article premium")[0];
-			if (premium) {
-				console.log("readystatechange cambio a complete " + premium);
-				chrome.runtime.sendMessage({cpag: document.location.href}, function(response) {
-						callback(response.farewell);
-					});
-			}
-		}
-	});
-}
-
-// Magic
-getCached(function(message) {
-	//console.log(message);
-	// Create div to manipulate
+// once we get the cached article we parse it
+function handleResponse(message) {
+  //console.log("LGC: cached article retrieved: ", message.cachedC);
+  // Create div to manipulate
 	var wpDiv = document.createElement('div');
-	wpDiv.innerHTML = message;
+	wpDiv.innerHTML = message.cachedC;
 	// Avoid main page
 	if (document.location.href != "https://www.lagaceta.com.ar/") {	
-		console.log("La pagina es una nota...");
+		console.log("LGC: the page is an article...");
 			// Only inject on premium content
 			const premium = document.getElementsByClassName("article premium")[0];
 			const especialpremium = document.getElementsByClassName("especial")[0];
 			const edupremium = document.getElementsByClassName("edu")[0];
-			console.log("premium: " + premium + " especial: " + especialpremium + " edu: " + edupremium);
+			console.log("LGC: (premium status: " + premium + ") (especial status: " + especialpremium + ") (edu status: " + edupremium + ")");
 			if (premium) {
-				console.log("La nota es Premium...");
+				console.log("LGC: the article is premium...");
 					// Check for 404
 					if (message === 404) {
 						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Nota temporalmente inaccesible en el cache de Google, por favor intente más tarde.</p></div>';
@@ -102,9 +102,9 @@ getCached(function(message) {
 						var cachedDiv = wpDiv.querySelector('#articleContent');
 						// Special needs :D
 						if (especialpremium || edupremium) {
-							console.log("La nota es Especial...");
+							console.log("LGC: the article is Especial...");
 							// Fix img src if needed 
-							// This works for edu but may not work for especial, needs testing
+							// This works for edu but may not work for especial, needs more testing
 							const srcImages = cachedDiv.querySelectorAll('.pic > img');
 							if ( srcImages.length ) {
 								for(var i=0;i<srcImages.length;i++){
@@ -159,11 +159,38 @@ getCached(function(message) {
 							}
 						}
 						// Inject modified cached div
-						//console.log('cached div: ' + cachedDiv.innerHTML);
 						document.getElementById('articleContent').innerHTML = cachedDiv.innerHTML;
 					}
 			} else {
-				console.log("La nota no es premium...");
+				console.log("LGC: the article is not premium...");
 			}
 	}
-});
+  
+}
+
+// got 99 problems but google cache ain't one
+function handleError(error) {
+  console.log(`Error: ${error}`);
+}
+
+// sending the current url to the service worker
+function letsGo(e) {
+	// Needed because run_at is set to start (because of darktheme and FOUC)
+	document.addEventListener('readystatechange', event => {
+		// Wait until we can read the html we want, should be complete insted of interactive but *it works tm*
+		if (event.target.readyState === 'interactive') {
+			// Only request on premium article
+			const premium = document.getElementsByClassName("article premium")[0];
+			if (premium) {
+				console.log("LGC: readystatechange = complete:", premium);
+				const sending = browser.runtime.sendMessage({
+					premiumURL: document.location.href,
+				});
+				sending.then(handleResponse, handleError);
+			}
+		}
+	});
+}
+
+// startup
+letsGo();

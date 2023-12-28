@@ -36,6 +36,8 @@ div[class^="add big topbanner"] {
 .darkmode .block .timeline .card .text .time { color: #808080 !important; }
 /* remove the awful line below the top brand banner on darkmode */
 .darkmode header.section { margin-bottom: -0.1rem !important; }
+/* icono audio en notas */
+.darkmode .article .articleBody .audio h4 i { color: #fff; }
 
 .darkmode .article .articleHead .breadcrumb a .icon-angle-right-regular, .article .articleHead .breadcrumb span .icon-angle-right-regular { color: #C0C0C0 !important; }
 .darkmode p { color: #F5F5F5 !important; }
