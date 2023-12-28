@@ -1,6 +1,7 @@
-## firefox webextension
-### **LG cached**
+## Extensión Web para Firefox
+### **LG Cached**
 ### Manifest *v3*
-**Small extension to add the following functionality to lagaceta.com.ar:**
-- retrieves cached content from google's server (if available) on pages with intrusive JS/CSS.
-- dark theme mode on the fly.
+**Pequeña extensión que agrega las siguientes funcionalidades a lagaceta.com.ar:**
+- Intenta recuperar contenido no disponible del cache de Google.
+- Modo oscuro automático (se puede forzar y/o deshabilitar).
+- Mejoras generales en el CSS y JS.
