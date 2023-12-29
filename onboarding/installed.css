@@ -499,7 +499,7 @@ input, select, textarea {
 
 	#sec {
 		padding: 0em 0 1em 0 ; /* mod */
-		display: block;
+		display: none;
 	}
 	
 	#sec img {
