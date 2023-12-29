@@ -34,27 +34,8 @@ ol, ul {
 	list-style: none;
 }
 
-blockquote, q {
-	quotes: none;
-}
-
-	blockquote:before, blockquote:after, q:before, q:after {
-		content: '';
-		content: none;
-	}
-
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
-}
-
 body {
 	-webkit-text-size-adjust: none;
-}
-
-mark {
-	background-color: transparent;
-	color: inherit;
 }
 
 input::-moz-focus-inner {
@@ -205,7 +186,7 @@ input, select, textarea {
 
 	h2, h3, h4, h5, h6 {
 		font-weight: 900;
-		line-height: 1.5;
+		/*line-height: 1.5;*/
 		margin: 0 0 2em 0;
 		text-transform: uppercase;
 		letter-spacing: 0.35em;
@@ -217,13 +198,13 @@ input, select, textarea {
 		}
 
 	h2 {
-		font-size: 1.1em;
+		font-size: 1.1em !important;
 		color: white;
 		margin-bottom: 0.5em;
-		border-top: 0.3em solid green;
+		border-top: 0.32em solid green; /* mozfix, remove on chrome */
 		background-color: green;
 		border-radius: 25px;
-		line-height: 1.1;
+		line-height: 1.1 !important;
 	}
 
 	h3 {
@@ -255,57 +236,14 @@ input, select, textarea {
 	@media screen and (max-width: 736px) {
 
 		h2 {
-			font-size: 1em;
+			font-size: 1em !important;
 		}
 
 		h3 {
-			font-size: 0.8em;
+			font-size: 0.8em !important;
 		}
 
 	}
-
-	sub {
-		font-size: 0.8em;
-		position: relative;
-		top: 0.5em;
-	}
-
-	sup {
-		font-size: 0.8em;
-		position: relative;
-		top: -0.5em;
-	}
-
-	blockquote {
-		border-left: solid 4px #c9c9c9;
-		font-style: italic;
-		margin: 0 0 2em 0;
-		padding: 0.5em 0 0.5em 2em;
-	}
-
-	code {
-		background: rgba(144, 144, 144, 0.075);
-		border-radius: 4px;
-		border: solid 1px #c9c9c9;
-		font-family: "Courier New", monospace;
-		font-size: 0.9em;
-		margin: 0 0.25em;
-		padding: 0.25em 0.65em;
-	}
-
-	pre {
-		-webkit-overflow-scrolling: touch;
-		font-family: "Courier New", monospace;
-		font-size: 0.9em;
-		margin: 0 0 2em 0;
-	}
-
-		pre code {
-			display: block;
-			line-height: 1.75;
-			padding: 1em 1.5em;
-			overflow-x: auto;
-		}
 
 	hr {
 		border: 0;
@@ -362,86 +300,6 @@ input, select, textarea {
 	margin-top: 0.5em;
 	text-align: center;
 }
-
-/* Icon */
-
-	.icon {
-		text-decoration: none;
-		border-bottom: none;
-		position: relative;
-	}
-
-		.icon:before {
-			-moz-osx-font-smoothing: grayscale;
-			-webkit-font-smoothing: antialiased;
-			display: inline-block;
-			font-style: normal;
-			font-variant: normal;
-			text-rendering: auto;
-			line-height: 1;
-			text-transform: none !important;
-			font-family: 'Font Awesome 5 Free';
-			font-weight: 400;
-		}
-
-		.icon > .label {
-			display: none;
-		}
-
-		.icon:before {
-			line-height: inherit;
-		}
-
-		.icon.solid:before {
-			font-weight: 900;
-		}
-
-		.icon.brands:before {
-			font-family: 'Font Awesome 5 Brands';
-		}
-
-		.icon.style2 {
-			-moz-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-			-webkit-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-			-ms-transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-			transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-			background-color: transparent;
-			border: solid 1px #c9c9c9;
-			border-radius: 4px;
-			width: 2.65em;
-			height: 2.65em;
-			display: inline-block;
-			text-align: center;
-			line-height: 2.65em;
-			color: inherit;
-		}
-
-			.icon.style2:before {
-				font-size: 1.1em;
-			}
-
-			.icon.style2:hover {
-				color: #f2849e;
-				border-color: #f2849e;
-			}
-
-			.icon.style2:active {
-				background-color: rgba(242, 132, 158, 0.1);
-			}
-
-/* Icons */
-
-	ul.icons {
-		cursor: default;
-		list-style: none;
-		padding-left: 0;
-		margin: -1em 0 2em -1em;
-	}
-
-		ul.icons li {
-			display: inline-block;
-			padding: 1em 0 0 1em;
-		}
 
 /* Button */
 
@@ -604,107 +462,12 @@ input, select, textarea {
 					margin-bottom: 0.5em; /* mod */
 				}
 
-		#header nav {
-			position: fixed;
-			right: 2em;
-			top: 2em;
-			z-index: 10000;
-		}
-
-			#header nav ul {
-				display: -moz-flex;
-				display: -webkit-flex;
-				display: -ms-flex;
-				display: flex;
-				-moz-align-items: center;
-				-webkit-align-items: center;
-				-ms-align-items: center;
-				align-items: center;
-				list-style: none;
-				margin: 0;
-				padding: 0;
-			}
-
-				#header nav ul li {
-					display: block;
-					padding: 0;
-				}
-
-					#header nav ul li a {
-						display: block;
-						position: relative;
-						height: 3em;
-						line-height: 3em;
-						padding: 0 1.5em;
-						background-color: rgba(255, 255, 255, 0.5);
-						border-radius: 4px;
-						border: 0;
-						font-size: 0.8em;
-						font-weight: 900;
-						letter-spacing: 0.35em;
-						text-transform: uppercase;
-					}
-
-					#header nav ul li a[href="#menu"] {
-						-webkit-tap-highlight-color: transparent;
-						width: 4em;
-						text-indent: 4em;
-						font-size: 1em;
-						overflow: hidden;
-						padding: 0;
-						white-space: nowrap;
-					}
-
-						#header nav ul li a[href="#menu"]:before, #header nav ul li a[href="#menu"]:after {
-							-moz-transition: opacity 0.2s ease;
-							-webkit-transition: opacity 0.2s ease;
-							-ms-transition: opacity 0.2s ease;
-							transition: opacity 0.2s ease;
-							content: '';
-							display: block;
-							position: absolute;
-							top: 0;
-							left: 0;
-							width: 100%;
-							height: 100%;
-							background-position: center;
-							background-repeat: no-repeat;
-							background-size: 2em 2em;
-						}
-
-						#header nav ul li a[href="#menu"]:before {
-							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23f2849e%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
-							opacity: 0;
-						}
-
-						#header nav ul li a[href="#menu"]:after {
-							background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 8px%3B stroke: %23585858%3B %7D%3C/style%3E%3Cline x1='0' y1='25' x2='100' y2='25' /%3E%3Cline x1='0' y1='50' x2='100' y2='50' /%3E%3Cline x1='0' y1='75' x2='100' y2='75' /%3E%3C/svg%3E");
-							opacity: 1;
-						}
-
-						#header nav ul li a[href="#menu"]:hover:before {
-							opacity: 1;
-						}
-
-						#header nav ul li a[href="#menu"]:hover:after {
-							opacity: 0;
-						}
-
 		@media screen and (max-width: 736px) {
 
 			#header {
 				/* padding: 4em 0 0.1em 0 ; */
 				padding: 1em 0 0.1em 0 ;
 			}
-
-				#header nav {
-					right: 0.5em;
-					top: 0.5em;
-				}
-
-					#header nav ul li a[href="#menu"]:before, #header nav ul li a[href="#menu"]:after {
-						background-size: 1.5em 1.5em;
-					}
 
 		}
 
@@ -736,7 +499,7 @@ input, select, textarea {
 
 	#sec {
 		padding: 0em 0 1em 0 ; /* mod */
-		display: none;
+		display: block;
 	}
 	
 	#sec img {
