@@ -64,12 +64,29 @@ function fireContentLoadedEvent () {
 				} else {
 					document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>';
 				}
-			} else {
+			} else if (options.dmToggle === false) {
 				if (especialpremium || edupremium) {
 					document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
 					document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>';
 				} else {
 					document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>';
+				}
+			} else {
+				// needed when there's no stored value and we use automatic detection by system
+				if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
+					if (especialpremium || edupremium) {
+						document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
+						document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>';
+					} else {
+						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>';
+					}
+				} else {
+					if (especialpremium || edupremium) {
+						document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
+						document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>';
+					} else {
+						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>';
+					}
 				}
 			}
 		}
@@ -78,7 +95,8 @@ function fireContentLoadedEvent () {
 
 // once we get the cached article we parse it
 function handleResponse(message) {
-  //console.log("LGC: cached article retrieved: ", message.cachedC);
+  console.log("LGC: cached article retrieved: ", message.cachedC);
+  console.log("LGC: cached article retrieved, only message: ", message);
   // Create div to manipulate
 	var wpDiv = document.createElement('div');
 	wpDiv.innerHTML = message.cachedC;
