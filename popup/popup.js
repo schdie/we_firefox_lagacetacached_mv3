@@ -1,3 +1,8 @@
+// our own mini dark-mode on the popup, will always follow system so no matching when forced
+if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
+			document.documentElement.classList.add('darkmode');
+}
+
 // in-page cache of the user's options
 const options = {};
 
@@ -7,21 +12,30 @@ browser.storage.local.get('options', (data) => {
   // dark mode
   //optionsForm.dmToggle.checked = Boolean(options.dmToggle);
   // a hack
+  console.log("options.dmToggle: ", options.dmToggle);
   if (options.dmToggle === true) {
+		console.log("options.dmToggle should be true: ", options.dmToggle);
 		optionsForm.dmToggle.checked = true;
 	} else if (options.dmToggle === false) {
+		console.log("options.dmToggle should be false: ", options.dmToggle);
 		optionsForm.dmToggle.checked = false;
 	} else {
 		if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
 			optionsForm.dmToggle.checked = true;
+			// set label to show auto selection
+			document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher cl-switch-auto";
 		} else {
 			optionsForm.dmToggle.checked = false;
+			// set label to show auto selection
+			document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher cl-switch-auto";
 		}
 	}
 });
 
 // immediately persist options changes for dark mode
 optionsForm.dmToggle.addEventListener('change', (event) => {
+	// set label to show forced selection
+	document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher";
   options.dmToggle = event.target.checked;
   browser.storage.local.set({options});
 });

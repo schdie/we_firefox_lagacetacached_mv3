@@ -1,43 +1,54 @@
-
-body {
-	/* min-width: 150px;*/
+@-ms-viewport {
+	width: device-width;
 }
 
+body {
+	-ms-overflow-style: scrollbar;
+}
+
+@media screen and (max-width: 736px) {
+
+	html, body {
+		min-width: 320px;
+	}
+
+}
+
+html {
+	box-sizing: border-box;
+}
+
+h3 {
+	text-align: center;
+	margin-top: -1em;
+}
+
+/* mini dark mode for popup */
+.darkmode body { background-color: #202124 !important; }
+.darkmode body, html { background-color: #202124 !important; }
+.darkmode label { color: #fff !important; }
 
 label {
 	display: block;
-	margin-left: 5px;
-	margin-bottom: 11px;
-	font-size: 14px;
+	margin-left: 0.5em;
+	margin-bottom: 1.5em;
+	font-size: 1.1em;
 }
 
+.inner {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
 
+.cl-switch-auto:before {
+	content: "a" !important;
+	text-align: center !important;
+	color: black !important;
+}
 
 .cl-switch {
-  /*
-  Switcher Style
-   */
-  /*
-  When Checked
-   */
-  /*
-  Switch large style
-   */
-  /*
-  Switch xlarge style
-   */
-  /*
-  Switch Black color style
-   */
-  /*
-  Switch Red color style
-   */
-  /*
-  Switch green color style
-   */
-  /*
-  Switch green color style
-   */ }
+
+}
   .cl-switch input[type="checkbox"] {
     display: none;
     visibility: hidden; }
@@ -46,6 +57,7 @@ label {
 		float: right;
 		clear: both;
     /**/
+    margin-top: 0.24em;
     display: inline-block;
     border-radius: 100px;
     width: 35px;
@@ -133,12 +145,12 @@ label {
       background-color: #ff6868; }
   .cl-switch.cl-switch-red .switcher:active:before {
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 10px rgba(255, 104, 104, 0.3); }
-  .cl-switch.cl-switch-green input[type="checkbox"]:checked + .switcher {
-    background-color: #77e4c0; }
-    .cl-switch.cl-switch-green input[type="checkbox"]:checked + .switcher:before {
-      background-color: #29cc97; }
-  .cl-switch.cl-switch-green .switcher:active:before {
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 10px rgba(41, 204, 151, 0.3); }
+  .cl-switch.cl-switch-blue input[type="checkbox"]:checked + .switcher {
+    background-color: #89bcec; }
+    .cl-switch.cl-switch-blue input[type="checkbox"]:checked + .switcher:before {
+      background-color: #0588ea; }
+  .cl-switch.cl-switch-blue .switcher:active:before {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.6), 0 0 0 10px rgba(0, 153, 255, 0.9); }
   .cl-switch.cl-switch-orange input[type="checkbox"]:checked + .switcher {
     background-color: #ffc166; }
     .cl-switch.cl-switch-orange input[type="checkbox"]:checked + .switcher:before {
