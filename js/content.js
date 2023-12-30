@@ -95,8 +95,7 @@ function fireContentLoadedEvent () {
 
 // once we get the cached article we parse it
 function handleResponse(message) {
-  console.log("LGC: cached article retrieved: ", message.cachedC);
-  console.log("LGC: cached article retrieved, only message: ", message);
+  //console.log("LGC: cached article retrieved: ", message.cachedC);
   // Create div to manipulate
 	var wpDiv = document.createElement('div');
 	wpDiv.innerHTML = message.cachedC;
@@ -111,13 +110,13 @@ function handleResponse(message) {
 			if (premium) {
 				console.log("LGC: the article is premium...");
 					// Check for 404
-					if (message === 404) {
+					if (message.cachedC === 404) {
 						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Nota temporalmente inaccesible en el cache de Google, por favor intente más tarde.</p></div>';
 					// Check for other numeric error
-					} else if (Number.isInteger(message)) {
+					} else if (Number.isInteger(message.cachedC)) {
 						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Hubo un error inesperado, por favor intente nuevamente más tarde o <a href="https://webcache.googleusercontent.com/search%3Fq%3Dcache:' + document.location.href + '">visite la nota en el cache de google</a>.</p></div>';
 					// Cache captcha probably...
-					} else if (message === 'REDIRECTED') {
+					} else if (message.cachedC === 'REDIRECTED') {
 						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>El cache de Google requiere autorización, por favor <a href="https://webcache.googleusercontent.com/search%3Fq%3Dcache:' + document.location.href + '">visite la nota en el cache de google</a>.</p></div>';
 					} else {
 						// Get the cached div
