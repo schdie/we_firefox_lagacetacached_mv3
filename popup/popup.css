@@ -23,20 +23,18 @@ h3 {
 	margin-top: -1em;
 }
 
+/* defaults */
 :root {
   background: #fff;
 }
-
-:root.darkmode {
-  background: #202124;
-}
-
-/* defaults */
 body { background-color: #fff;  height: 100%; }
 html { background-color: #fff; }
 label { color: #000; }
 
 /* mini dark mode for popup */
+:root.darkmode {
+  background: #202124;
+}
 .darkmode body { background-color: #202124;  height: 100%; }
 .darkmode html { background-color: #202124; }
 .darkmode label { color: #fff; }
