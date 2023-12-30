@@ -154,3 +154,31 @@ browser.runtime.onMessage.addListener(
 		}
 	}
 );
+
+var cDarkMode;
+
+// content script current value of dark theme from system
+browser.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		if (request.darkmodeValue) {
+			cDarkMode = request.darkmodeValue;
+			console.log("got darkmode current value from content script", request.darkmodeValue);
+		}
+	}
+);
+
+// popup request for the actual value of dark theme from content script
+browser.runtime.onMessage.addListener(
+	function(request, sender, sendResponse) {
+		if (request.darkmode) {
+			console.log("we got a a nice message from popup", request.darkmode);
+			if (cDarkMode == "true") {
+				sendResponse({ response: "true" });
+			} else {
+				sendResponse({ response: "false" });
+			}
+		}
+	}
+);
+
+

@@ -5,13 +5,17 @@ function detectSystemTheme() {
 	if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
 		console.log('LGC: system dark theme detected');
 		document.documentElement.classList.add('darkmode');
+		// send current theme to the background script
+		browser.runtime.sendMessage({darkmodeValue: "true"});
 	} else {
 		console.log('LGC: system light theme detected');
 		document.documentElement.classList.remove('darkmode');
+		// send current theme to the background script
+		browser.runtime.sendMessage({darkmodeValue: "false"});
 	}
 }
 
-// executing it first no matter what allows to minimize FOUC
+// there's no need to execute here but doing so and doing it first no matter what allows to minimize FOUC
 detectSystemTheme();
 
 // get darkmode state from storage and change/apply it if needed
