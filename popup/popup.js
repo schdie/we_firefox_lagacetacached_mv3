@@ -1,8 +1,3 @@
-// our own mini dark-mode on the popup, will always follow system so no matching when forced
-if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			document.documentElement.classList.add('darkmode');
-}
-
 // in-page cache of the user's options
 const options = {};
 
@@ -20,22 +15,41 @@ browser.storage.local.get('options', (data) => {
 		console.log("options.dmToggle should be false: ", options.dmToggle);
 		optionsForm.dmToggle.checked = false;
 	} else {
-		if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
-			optionsForm.dmToggle.checked = true;
-			// set label to show auto selection
-			document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher cl-switch-auto";
-		} else {
-			optionsForm.dmToggle.checked = false;
-			// set label to show auto selection
-			document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher cl-switch-auto";
-		}
+		getThemeFromContentScript();
 	}
 });
+
+// getting the correct and current value of dark theme
+function getThemeFromContentScript() {
+	const sending = browser.runtime.sendMessage({
+	darkmode: "We need the current value of the actual content script",
+	});
+	sending.then(ResponseDarkMode, handleError);;
+}
+
+function ResponseDarkMode(message) {
+  console.log(`Dark theme from background: ${message.response}`);
+  if (message.response == "true") {
+		optionsForm.dmToggle.checked = true;
+		// set label to show auto selection
+		document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher cl-switch-auto";
+		document.documentElement.classList.add('darkmode');
+	} else {
+		optionsForm.dmToggle.checked = false;
+		// set label to show auto selection
+		document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher cl-switch-auto";
+		document.documentElement.classList.remove('darkmode');
+	}
+}
+
+function handleError(error) {
+  console.log(`Error: ${error}`);
+}
 
 // immediately persist options changes for dark mode
 optionsForm.dmToggle.addEventListener('change', (event) => {
 	// set label to show forced selection
-	document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher";
+	//document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher";
   options.dmToggle = event.target.checked;
   browser.storage.local.set({options});
 });

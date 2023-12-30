@@ -23,10 +23,23 @@ h3 {
 	margin-top: -1em;
 }
 
+:root {
+  background: #fff;
+}
+
+:root.darkmode {
+  background: #202124;
+}
+
+/* defaults */
+body { background-color: #fff;  height: 100%; }
+html { background-color: #fff; }
+label { color: #000; }
+
 /* mini dark mode for popup */
-.darkmode body { background-color: #202124 !important; }
-.darkmode body, html { background-color: #202124 !important; }
-.darkmode label { color: #fff !important; }
+.darkmode body { background-color: #202124;  height: 100%; }
+.darkmode html { background-color: #202124; }
+.darkmode label { color: #fff; }
 
 label {
 	display: block;
@@ -41,9 +54,9 @@ label {
 }
 
 .cl-switch-auto:before {
-	content: "a" !important;
+	content: "A" !important;
 	text-align: center !important;
-	color: black !important;
+	color: #000b1c !important;
 }
 
 .cl-switch {
