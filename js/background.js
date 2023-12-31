@@ -21,7 +21,7 @@ function handleInstalled(details) {
 
 browser.runtime.onInstalled.addListener(handleInstalled);
 
-/*
+/* there's no need to set this at install now
 // on installation set options.dmToggle to follow system
 async function setDefaultValues() {
 	const options = {};
@@ -163,7 +163,7 @@ browser.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		if (request.darkmodeValue) {
 			cDarkMode = request.darkmodeValue;
-			console.log("got darkmode current value from content script", request.darkmodeValue);
+			console.log("LGC: message from content script with darkmode's current value: ", request.darkmodeValue);
 		}
 	}
 );
@@ -172,7 +172,7 @@ browser.runtime.onMessage.addListener(
 browser.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		if (request.darkmode) {
-			console.log("we got a a nice message from popup", request.darkmode);
+			console.log("LGC: message from popup: ", request.darkmode);
 			if (cDarkMode == "true") {
 				sendResponse({ response: "true" });
 			} else {
