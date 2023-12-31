@@ -25,9 +25,9 @@ browser.runtime.onInstalled.addListener(handleInstalled);
 async function setDefaultValues() {
 	const options = {};
 	browser.storage.local.get('options', (data) => {
+		Object.assign(options, data.options);
 		// Set options for the first time
 		if (!options){
-			Object.assign(options, data.options);
 			// set default to system
 			options.dmToggle = 'system';
 			browser.storage.local.set({options});
