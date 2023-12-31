@@ -8,7 +8,7 @@ function handleInstalled(details) {
     case "install":
       {
 				// set defaults in storage
-        setDefaultValues();
+        //setDefaultValues();
 				// onboarding page
         const url = browser.runtime.getURL("onboarding/installed.html");
         browser.tabs.create({ url, active: true });
@@ -21,6 +21,7 @@ function handleInstalled(details) {
 
 browser.runtime.onInstalled.addListener(handleInstalled);
 
+/*
 // on installation set options.dmToggle to follow system
 async function setDefaultValues() {
 	const options = {};
@@ -34,6 +35,7 @@ async function setDefaultValues() {
 		}
 	});	
 }
+*/
 
 // permissions
 async function reqPerm() {
