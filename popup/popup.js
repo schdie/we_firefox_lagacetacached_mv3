@@ -4,16 +4,14 @@ const options = {};
 // initialize the form with the user's option settings
 browser.storage.local.get('options', (data) => {
   Object.assign(options, data.options);
-  // dark mode
-  //optionsForm.dmToggle.checked = Boolean(options.dmToggle);
   // a hack
-  console.log("options.dmToggle: ", options.dmToggle);
+  console.log("popup options.dmToggle: ", options.dmToggle);
   if (options.dmToggle === true) {
-		console.log("options.dmToggle should be true: ", options.dmToggle);
 		optionsForm.dmToggle.checked = true;
+		document.documentElement.classList.add('darkmode');
 	} else if (options.dmToggle === false) {
-		console.log("options.dmToggle should be false: ", options.dmToggle);
 		optionsForm.dmToggle.checked = false;
+		document.documentElement.classList.remove('darkmode');
 	} else {
 		getThemeFromContentScript();
 	}
@@ -48,10 +46,14 @@ function handleError(error) {
 
 // immediately persist options changes for dark mode
 optionsForm.dmToggle.addEventListener('change', (event) => {
-	// set label to show forced selection
-	//document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher";
   options.dmToggle = event.target.checked;
   browser.storage.local.set({options});
+  // change our mini popup theme
+  if (event.target.checked === true) {
+		document.documentElement.classList.add('darkmode');
+	} else {
+		document.documentElement.classList.remove('darkmode');
+	}
 });
 
 // check current permissions status
