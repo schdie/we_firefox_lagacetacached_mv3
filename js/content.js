@@ -21,9 +21,9 @@ detectSystemTheme();
 // get darkmode state from storage and change/apply it if needed
 browser.storage.local.get('options', (data) => {
 	Object.assign(options, data.options);
-		if (options.dmToggle == "true") {
+		if (options.dmToggle === true) {
 			document.documentElement.classList.add('darkmode');
-		} else if (options.dmToggle == "false") {
+		} else if (options.dmToggle === false) {
 			document.documentElement.classList.remove('darkmode');
 		} else {
 			detectSystemTheme();
