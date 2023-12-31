@@ -51,8 +51,10 @@ optionsForm.dmToggle.addEventListener('change', (event) => {
   // change our mini popup theme
   if (event.target.checked === true) {
 		document.documentElement.classList.add('darkmode');
+		document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher";
 	} else {
 		document.documentElement.classList.remove('darkmode');
+		document.getElementsByClassName('switcher')[0].attributes.class.value = "switcher";
 	}
 });
 

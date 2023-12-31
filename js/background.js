@@ -1,5 +1,6 @@
 // global scope
 var installing = 'false';
+var cDarkMode;
 
 // only on install
 function handleInstalled(details) {
@@ -155,8 +156,6 @@ browser.runtime.onMessage.addListener(
 	}
 );
 
-var cDarkMode;
-
 // content script current value of dark theme from system
 browser.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
@@ -180,5 +179,3 @@ browser.runtime.onMessage.addListener(
 		}
 	}
 );
-
-
