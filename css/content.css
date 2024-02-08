@@ -14,9 +14,11 @@ div[class^="add big topbanner"] {
 }
 .add { background: none !important; }
 
-.add.big {
-  display: none !important;
-}
+.add.big { display: none !important; }
+
+/* nueva publicidad en articulos y pagina principal */
+.add.bn250 { display: none !important; }
+.add.bn90 { display: none !important; }
 
 /* dark mode */
 .darkmode .icon-bars-regular::before { color: #0070D7 !important; }
