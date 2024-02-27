@@ -62,6 +62,7 @@ div[class^="add big topbanner"] {
 .darkmode .article .articleBody .poll .item .number { color: #808080 !important; }
 .darkmode .article .articleBody .poll span.votes { color: #808080 !important; }
 .darkmode .article .articleBody .poll .item .txt { color: #fff !important; }
+.darkmode .article .articleBody .poll .option label { color: #fff !important; }
 
 /* top right comments and shares */
 .darkmode .article .articleHead .tools .right .icon-share-light { color: #808080 !important; }
