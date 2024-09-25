@@ -1,4 +1,4 @@
-/* v3.0 */
+/* v3.4 */
 function showloading() {
     if (document.getElementById("dloading")) document.getElementById("dloading").style.display = "block";
     else {
@@ -78,7 +78,7 @@ function searchNow() {
 function searchNowAdvanced() {
     url = URL_ACTUAL + "buscar?q=" + (word2 = (word2 = (word = (value = document.getElementById("textSearchAdvanced").value.trim()).replace(/ /gi, "_")).replace(/\./gi, "_")).toLowerCase()), document.getElementById("searchForm").setAttribute("action", url), document.getElementById("searchForm").submit(), showloading()
 }
-/* og
+
 function getGeneralData() {
     var e = new XMLHttpRequest,
         t = "origin=" + document.location.href;
@@ -88,75 +88,41 @@ function getGeneralData() {
                 sendUserPW(!0, resp.user)
             }, 500) : setInterval(function() {
                 sendUserPW(!1, !1)
-            }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber && (document.getElementById("side_suscription").style.display = "none")), document.getElementById("sidebar").style.display = "block";
+            }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber && (document.getElementById("side_suscription").style.display = "none"), resp.is_logged && sendInfoMf(resp.user.id, resp.is_subscriber, resp.subscriber_resource)), document.getElementById("sidebar").style.display = "block";
             var t = document.querySelector("#header");
             (t.classList.contains("is-home") || t.classList.contains("is-home-m")) && (document.querySelectorAll(".data-partido").forEach(function(e) {
                 minxmin.ajaxCall(e)
-            }), resp.zocPromo && (document.getElementById("zocPromoCont").innerHTML = resp.zocPromo, document.getElementById("zocPromoCont").style.display = "block", pushEventGTM("WidgetList", "NotifSuscriptor", "Print", "PromoLealesHome", 1)))
+            //}), resp.zocPromo && (document.getElementById("zocPromoCont").innerHTML = resp.zocPromo, document.getElementById("zocPromoCont").style.display = "block", pushEventGTM("WidgetList", "NotifSuscriptor", "Print", "PromoLealesHome", 1))), resp.zocPromo || "undefined" == typeof anchor_slot || googletag.display(anchor_slot)
+						}))
         }
     }
-}*/
-
-function getGeneralData() {
-	var e = new XMLHttpRequest,
-		t = "origin=" + document.location.href;
-	e.open("POST", URL_ACTUAL + "ajax/getInfo", !0), e.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), e.send(t), e.onload = function() {
-		if (200 == e.status) {
-			(resp = JSON.parse(e.response)).status && ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), callSignPW = resp.is_logged ? setInterval(function() {
-				sendUserPW(!0, resp.user)
-			}, 500) : setInterval(function() {
-				sendUserPW(!1, !1)
-			}, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber && (document.getElementById("side_suscription").style.display = "none")), document.getElementById("sidebar").style.display = "block";
-			var t = document.querySelector("#header");
-			(t.classList.contains("is-home") || t.classList.contains("is-home-m")) && (document.querySelectorAll(".data-partido").forEach(function(e) {
-				minxmin.ajaxCall(e)
-			}), resp.zocPromo && (document.getElementById("zocPromoCont").innerHTML = resp.zocPromo, document.getElementById("zocPromoCont").style.display = "block", pushEventGTM("WidgetList", "NotifSuscriptor", "Print", "PromoLeales", 1)))
-		}
-	}
 }
-/* og
+
 function getGeneralDataFromArticle(e, t) {
     var n = new XMLHttpRequest,
-        i = "id=" + e + "&type=" + t + "&origin=" + document.location.href;
-    n.open("POST", URL_ACTUAL + "ajax/getInfo", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send(i), n.onload = function() {
-        200 == n.status && ((resp = JSON.parse(n.response)).status && ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), callSignPW = resp.is_logged ? setInterval(function() {
-            sendUserPW(!0, resp.user)
-        }, 500) : setInterval(function() {
-            sendUserPW(!1, !1)
-        }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (document.getElementById("articleContent").innerHTML = resp.viewContent, resp.ads_ajax && setTimeout(function() {
-            callGtag = setInterval(function() {
-                displayGbanner(resp.ads_ajax)
-            }, 1e3)
-        }, 3e3), lazyload(), resp.show_wall && (document.getElementsByTagName("html")[0].style = "overflow: hidden", document.getElementById("dilogComments").remove(), document.getElementById("articleAudio") && document.getElementById("articleAudio").remove())), resp.share ? document.querySelectorAll("span.js-share-count").forEach(function(e) {
-            e.innerHTML = resp.share
-        }) : document.getElementById("j-ishare") && (document.getElementById("j-ishare").innerHTML = ""), resp.totalComments ? resp.totalComments > 0 ? document.querySelectorAll("span.js-comment-count").forEach(function(e) {
-            e.innerHTML = resp.totalComments
-        }) : (document.getElementById("iCommentsUp").remove(), document.getElementById("iCommentsDown").remove()) : document.querySelectorAll("span.js-comment-count").forEach(function(e) {
-            e.innerHTML = ""
-        }), resp.show_wall || showWidgetList(e), resp.is_selected && pushEventGTM("WidgetList", "NotifSuscriptor", "Print", resp.is_selected, 1)), document.getElementById("sidebar").style.display = "block")
+        s = "id=" + e + "&type=" + t + "&origin=" + document.location.href;
+    n.open("POST", URL_ACTUAL + "ajax/getInfo", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send(s), n.onload = function() {
+        if (200 == n.status) {
+            if ((resp = JSON.parse(n.response)).status) {
+                if ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), callSignPW = resp.is_logged ? setInterval(function() {
+                        sendUserPW(!0, resp.user)
+                    }, 500) : setInterval(function() {
+                        sendUserPW(!1, !1)
+                    }, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent) {
+                    let t = document.createElement("script");
+                    t.src = "https://www.tiktok.com/embed.js", t.async = !0, document.body.appendChild(t)
+                }
+                resp.share ? document.querySelectorAll("span.js-share-count").forEach(function(e) {
+                    e.innerHTML = resp.share
+                }) : document.getElementById("j-ishare") && (document.getElementById("j-ishare").innerHTML = ""), resp.totalComments ? resp.totalComments > 0 ? document.querySelectorAll("span.js-comment-count").forEach(function(e) {
+                    e.innerHTML = resp.totalComments
+                }) : (document.getElementById("iCommentsUp").remove(), document.getElementById("iCommentsDown").remove()) : document.querySelectorAll("span.js-comment-count").forEach(function(e) {
+                    e.innerHTML = ""
+                }), showWidgetList(e)
+            }
+            document.getElementById("sidebar").style.display = "block"
+        }
     }
-}*/
-
-function getGeneralDataFromArticle(e, t) {
-	var n = new XMLHttpRequest,
-		i = "id=" + e + "&type=" + t + "&origin=" + document.location.href;
-	n.open("POST", URL_ACTUAL + "ajax/getInfo", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send(i), n.onload = function() {
-		200 == n.status && ((resp = JSON.parse(n.response)).status && ("" != resp.user_menu && (document.getElementById("user_menu").innerHTML = resp.user_menu), callSignPW = resp.is_logged ? setInterval(function() {
-			sendUserPW(!0, resp.user)
-		}, 500) : setInterval(function() {
-			sendUserPW(!1, !1)
-		}, 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (resp.ads_ajax && setTimeout(function() {
-			callGtag = setInterval(function() {
-				displayGbanner(resp.ads_ajax)
-			}, 1e3)
-		}, 3e3), lazyload(), (document.getElementsByTagName("html")[0].style = "overflow: visible")), resp.share ? document.querySelectorAll("span.js-share-count").forEach(function(e) {
-			e.innerHTML = resp.share
-		}) : document.getElementById("j-ishare") && (document.getElementById("j-ishare").innerHTML = ""), resp.totalComments ? resp.totalComments > 0 ? document.querySelectorAll("span.js-comment-count").forEach(function(e) {
-			e.innerHTML = resp.totalComments
-		}) : (document.getElementById("iCommentsUp").remove(), document.getElementById("iCommentsDown").remove()) : document.querySelectorAll("span.js-comment-count").forEach(function(e) {
-			e.innerHTML = ""
-		}), showWidgetList(e)), document.getElementById("sidebar").style.display = "block")
-	}
 }
 /*
 function displayGbanner(e) {
@@ -208,7 +174,7 @@ function sendUserPW(e, t) {
         roles: t.roles
     }) : paywall.auth.isLogged() && paywall.signOff(), clearInterval(callSignPW))
 }
-
+/*
 function sendOnesignal(e, t, n, i, s) {
     var a = window.OneSignal || [];
     a.push(function() {
@@ -229,7 +195,7 @@ function sendOnesignal(e, t, n, i, s) {
         }), a.setExternalUserId(e), t && a.sendTag("suscripto", "si").then(function(e) {})
     })
 }
-
+*/
 function sendShareCl(e, t) {
     var n = new XMLHttpRequest;
     n.open("POST", URL_ACTUAL + "redes/shareTwWh", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send("objeto_id=" + e + "&type=" + t), n.onload = function() {
@@ -258,10 +224,10 @@ var minxmin = {
     getTime: function(e) {
         var t = new Date(e).getTime(),
             n = new Date().getTime() - t,
-            i = parseInt(n / 1e3 / 60 / 60),
-            s = parseInt(n / 1e3 / 60 - 60 * i),
-            a = parseInt(n / 1e3 - 3600 * i - 60 * s);
-        return i > 0 ? (i > 9 ? i : "0" + i) + ":" + (s > 9 ? s : "0" + s) + ":" + (a > 9 ? a : "0" + a) : (s > 9 ? s : "0" + s) + ":" + (a > 9 ? a : "0" + a)
+            s = parseInt(n / 1e3 / 60 / 60),
+            i = parseInt(n / 1e3 / 60 - 60 * s),
+            a = parseInt(n / 1e3 - 3600 * s - 60 * i);
+        return s > 0 ? (s > 9 ? s : "0" + s) + ":" + (i > 9 ? i : "0" + i) + ":" + (a > 9 ? a : "0" + a) : (i > 9 ? i : "0" + i) + ":" + (a > 9 ? a : "0" + a)
     },
     showTimer: function(e, t) {
         var n = e.dataset.fecha_estado;
@@ -281,78 +247,79 @@ var minxmin = {
     stop: function(e) {
         minxmin.intervalos["reloj_" + e] && clearInterval(minxmin.intervalos["reloj_" + e])
     },
-    startInterval: function(e, t, n, i) {
-        var s = this;
+    startInterval: function(e, t, n, s) {
+        var i = this;
         minxmin.intervalos[e + n] = setInterval(function() {
-            s.getMatchData(n, i)
+            i.getMatchData(n, s)
         }, 1e3 * t)
     },
     ajaxCall: function(e) {
         var t = e.dataset.id_partido;
         e.dataset.estado;
-        var n = e.getElementsByClassName("js-reloj-mam")[0],
+        var n = e.dataset.check,
+            s = e.getElementsByClassName("js-reloj-mam")[0],
             i = e.getElementsByClassName("js-hora")[0],
-            s = n.dataset.uniq,
-            a = e.getElementsByClassName("js-descripcion-estado")[0];
-        if (e.getElementsByClassName("js-marquee")) var o = e.getElementsByClassName("js-marquee")[0];
-        else var o = !1;
+            a = s.dataset.uniq,
+            o = e.getElementsByClassName("js-descripcion-estado")[0];
+        if (e.getElementsByClassName("js-marquee")) var r = e.getElementsByClassName("js-marquee")[0];
+        else var r = !1;
         var l = e.getElementsByClassName("js-local-name")[0],
-            r = e.getElementsByClassName("js-visit-name")[0],
+            c = e.getElementsByClassName("js-visit-name")[0],
             d = e.getElementsByClassName("js-local-shield")[0],
-            c = e.getElementsByClassName("js-visit-shield")[0],
-            m = e.getElementsByClassName("js-score")[0],
-            u = this,
-            g = function(e) {
-                switch (l.innerHTML = e.local_abbr, r.innerHTML = e.visita_abbr, d.setAttribute("src", e.escudo_local), c.setAttribute("src", e.escudo_visita), e.gol_penal_local ? m.innerHTML = '<span style="font-size:10px;">(' + e.gol_penal_local + ")</span>" + e.gol_local + " . " + e.gol_visita + '<span style="font-size:10px;">(' + e.gol_penal_visita + ")</span>" : m.innerHTML = e.gol_local + " . " + e.gol_visita, n.dataset.fecha_estado = e.fecha_inicio_estado, parseInt(e.mam_estado)) {
+            m = e.getElementsByClassName("js-visit-shield")[0],
+            u = e.getElementsByClassName("js-score")[0],
+            g = this,
+            p = function(e) {
+                switch (l.innerHTML = e.local_abbr, c.innerHTML = e.visita_abbr, d.setAttribute("src", e.escudo_local), m.setAttribute("src", e.escudo_visita), e.gol_penal_local ? u.innerHTML = '<span style="font-size:10px;">(' + e.gol_penal_local + ")</span>" + e.gol_local + " . " + e.gol_visita + '<span style="font-size:10px;">(' + e.gol_penal_visita + ")</span>" : u.innerHTML = e.gol_local + " . " + e.gol_visita, s.dataset.fecha_estado = e.fecha_inicio_estado, parseInt(e.mam_estado)) {
                     case 0:
-                        i.innerHTML = e.fecha_corta + " " + e.hora_inicio + " hrs", a.innerHTML = "", o && (o.innerHTML = "");
+                        i.innerHTML = e.fecha_corta + " " + e.hora_inicio + " hrs", o.innerHTML = "", r && (r.innerHTML = "");
                         break;
                     case 1:
-                        minxmin.iniciarReloj(n, s, i), a.innerHTML = "PT", o && (o.innerHTML = e.incidencias);
+                        minxmin.iniciarReloj(s, a, i), o.innerHTML = "PT", r && (r.innerHTML = e.incidencias);
                         break;
                     case 2:
-                        minxmin.stop(s), e.fecha_corta ? i.innerHTML = e.fecha_corta : i.innerHTML = "Fin", a.innerHTML = "", o && (o.innerHTML = e.incidencias);
+                        minxmin.stop(a), e.fecha_corta ? i.innerHTML = e.fecha_corta : i.innerHTML = "Fin", o.innerHTML = "", r && (r.innerHTML = e.incidencias);
                         break;
                     case 3:
-                        minxmin.stop(s), i.innerHTML = "Susp", a.innerHTML = "", o && (o.innerHTML = e.incidencias);
+                        minxmin.stop(a), i.innerHTML = "Susp", o.innerHTML = "", r && (r.innerHTML = e.incidencias);
                         break;
                     case 4:
-                        minxmin.stop(s), i.innerHTML = "Post", a.innerHTML = "";
+                        minxmin.stop(a), i.innerHTML = "Post", o.innerHTML = "";
                         break;
                     case 5:
                     case 9:
-                        minxmin.stop(s), i.innerHTML = "ET", a.innerHTML = "", o && (o.innerHTML = e.incidencias);
+                        minxmin.stop(a), i.innerHTML = "ET", o.innerHTML = "", r && (r.innerHTML = e.incidencias);
                         break;
                     case 6:
-                        minxmin.iniciarReloj(n, s, i), a.innerHTML = "ST", o && (o.innerHTML = e.incidencias);
+                        minxmin.iniciarReloj(s, a, i), o.innerHTML = "ST", r && (r.innerHTML = e.incidencias);
                         break;
                     case 7:
-                        minxmin.stop(s), i.innerHTML = "Alar", a.innerHTML = "", o && (o.innerHTML = e.incidencias);
+                        minxmin.stop(a), i.innerHTML = "Alar", o.innerHTML = "", r && (r.innerHTML = e.incidencias);
                         break;
                     case 8:
-                        minxmin.iniciarReloj(n, s, i), a.innerHTML = "PTA", o && (o.innerHTML = e.incidencias);
+                        minxmin.iniciarReloj(s, a, i), o.innerHTML = "PTA", r && (r.innerHTML = e.incidencias);
                         break;
                     case 10:
-                        minxmin.iniciarReloj(n, s, i), a.innerHTML = "STA", o && (o.innerHTML = e.incidencias);
+                        minxmin.iniciarReloj(s, a, i), o.innerHTML = "STA", r && (r.innerHTML = e.incidencias);
                         break;
                     case 11:
-                        minxmin.stop(s), i.innerHTML = "Fin", a.innerHTML = "", o && (o.innerHTML = e.incidencias);
+                        minxmin.stop(a), i.innerHTML = "Fin", o.innerHTML = "", r && (r.innerHTML = e.incidencias);
                         break;
                     case 12:
-                        minxmin.stop(s), i.innerHTML = "Pen", a.innerHTML = "", o && (o.innerHTML = e.incidencias), minxmin.intervalos["penales_partido_" + t] || (clearInterval(minxmin.intervalos["partido_" + t]), u.startInterval("penales_partido_", 10, t, g))
+                        minxmin.stop(a), i.innerHTML = "Pen", o.innerHTML = "", r && (r.innerHTML = e.incidencias), minxmin.intervalos["penales_partido_" + t] || (clearInterval(minxmin.intervalos["partido_" + t]), g.startInterval("penales_partido_", 10, t, p))
                 }
             };
-        this.getMatchData(t, g), this.startInterval("partido_", 60, t, g)
+        this.getMatchData(t, p), 1 == n && this.startInterval("partido_", 60, t, p)
     },
     ajaxCallCards: function(e) {
         var t = e.dataset.pid,
             n = e.getElementsByClassName("js-nombre-local")[0],
-            i = e.getElementsByClassName("js-nombre-visita")[0],
-            s = e.getElementsByClassName("js-escudo-local")[0],
+            s = e.getElementsByClassName("js-nombre-visita")[0],
+            i = e.getElementsByClassName("js-escudo-local")[0],
             a = e.getElementsByClassName("js-escudo-visita")[0],
             o = e.getElementsByClassName("js-resultado")[0],
-            l = function(e) {
-                if (e.local_abbr) switch (n.innerHTML = e.local_abbr, i.innerHTML = e.visita_abbr, s.setAttribute("src", e.escudo_local), a.setAttribute("src", e.escudo_visita), parseInt(e.mam_estado)) {
+            r = function(e) {
+                if (e.local_abbr) switch (n.innerHTML = e.local_abbr, s.innerHTML = e.visita_abbr, i.setAttribute("src", e.escudo_local), a.setAttribute("src", e.escudo_visita), parseInt(e.mam_estado)) {
                     case 2:
                         e.gol_penal_local || e.gol_penal_visita ? o.innerHTML = "<span>(" + e.gol_penal_local + ")<span> " + e.gol_local + " . " + e.gol_visita + " <span>(" + e.gol_penal_visita + ")</span>" : o.innerHTML = e.gol_local + " . " + e.gol_visita;
                         break;
@@ -363,7 +330,7 @@ var minxmin = {
                         o.innerHTML = e.gol_local + " . " + e.gol_visita
                 }
             };
-        this.getMatchData(t, l)
+        this.getMatchData(t, r)
     }
 };
 
@@ -477,8 +444,8 @@ if (document.addEventListener) {
     let e = document.location,
         t = e.pathname.split("/");
     var n = 0;
-    t.forEach(function(e, i) {
-        "nota" == e && (n = t[i + 1])
+    t.forEach(function(e, s) {
+        "nota" == e && (n = t[s + 1])
     }), n > 0 ? getGeneralDataFromArticle(n, 32) : getGeneralData()
 }
 /* og
@@ -572,6 +539,6 @@ function elecciones2023_grales(e, t, n) {
     showloading();
     var s = new XMLHttpRequest;
     s.open("POST", URL_ACTUAL + "widget/elecc2023_gral", !0), s.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), s.send("categoria_id=" + e + "&distrito_id=" + t + "&tipo=" + n), s.onload = function() {
-        200 == s.status && (resp = JSON.parse(s.response)).status && (document.getElementById(resp.content_id).innerHTML = resp.view, "bar" == n ? document.getElementById("distritos1").value = t : 2 == e && (document.getElementById("distritos2").value = t)), hideloading()
+        200 == s.status && (resp = JSON.parse(s.response)).status && (document.getElementById(resp.content_id).innerHTML = resp.view), hideloading()
     }
 }
