@@ -7,7 +7,7 @@ closeButton.addEventListener("click", function(event){
 //https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/permissions/request
 const permissionsToRequest = {
   //permissions: ["storage", "webRequest", "webRequestBlocking"],
-  origins: ["*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
 };
 
 async function requestPermissions() {
@@ -37,12 +37,12 @@ document.getElementById("grantPerms").addEventListener("click", requestPermissio
 // check if perms are granted on load because sometimes FF refreshes the onboarding page after a permissions change
 async function reqPerm() {
 	let challengeAllPerms = {
-		origins: ["*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
 		permissions: ["storage", "webRequest", "webRequestBlocking"],
 	};
 	
 	let challengeOriginsPerms = {
-		origins: ["*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
 	};
 	
 	let challengeBasicPerms = {
