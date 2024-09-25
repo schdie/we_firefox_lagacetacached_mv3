@@ -3,7 +3,7 @@
   "manifest_version": 3,
   "name": "LG Cached",
   "homepage_url": "https://github.com/schdie/we_firefox_lagacetacached_mv3",
-  "version": "3.43",
+  "version": "3.44",
   
   "icons": {
     "48": "icons/48.png",
@@ -52,10 +52,10 @@
   "browser_specific_settings": {
     "gecko": {
 			"id": "{400be594-34dd-4ae0-a0a4-20b5eca8473c}",
-      "strict_min_version": "109.0"
+      "strict_min_version": "129.0"
     },
     "gecko_android": {
-			"strict_min_version": "121.0"
+			"strict_min_version": "129.0"
 		}
   }
 }

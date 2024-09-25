@@ -116,6 +116,10 @@ browser.webRequest.onBeforeRequest.addListener(
   ["blocking"]
 );
 
+let headers = new Headers({
+    "User-Agent"   : "Googlebot-News"
+});
+
 // try to get the cached URL with the premium article
 browser.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
@@ -124,10 +128,12 @@ browser.runtime.onMessage.addListener(
 			console.log("LGC: requested premiumURL: " + requestedPremiumURL);
 			// get the cached version of the premium article
 			if (requestedPremiumURL != "https://www.lagaceta.com.ar/") {
-			// Construct cached content URL
-			var ccUrl = 'https://webcache.googleusercontent.com/search?q=cache:' + requestedPremiumURL;
-			// Get html content from ccUrl
-			fetch(ccUrl)
+			// fetch ccUrl requestedPremiumURL
+			fetch(requestedPremiumURL, {
+				method  : 'GET', 
+				headers : headers 
+				// ... etc
+				})
 				.then(
 				function(response) {
 					console.log('LGC: are we being redirected?: ' + response.redirected);
