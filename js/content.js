@@ -60,32 +60,40 @@ function fireContentLoadedEvent () {
 			if (options.dmToggle === true) {
 				if (especialpremium || edupremium) {
 					document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
-					document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>';
+					document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>');
+					//document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>';
 				} else {
-					document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>';
+					document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>');
+					//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>';
 				}
 			} else if (options.dmToggle === false) {
 				if (especialpremium || edupremium) {
 					document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
-					document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>';
+					document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>');
+					//document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>';
 				} else {
-					document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>';
+					document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>');
+					//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>';
 				}
 			} else {
 				// needed when there's no stored value and we use automatic detection by system
 				if (window.matchMedia && !!window.matchMedia('(prefers-color-scheme: dark)').matches) {
 					if (especialpremium || edupremium) {
 						document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
-						document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div></div></div></div>';
 					} else {
-						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplusdm">Buscando la nota, por favor espere</p></div>';
 					}
 				} else {
 					if (especialpremium || edupremium) {
 						document.querySelector('#articleContent').setAttribute("class", "row justify-content-center");
-						document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="container"><div class="articleBody"><div class="row justify-content-center"><div class="col-xl-8 col-lg-8 col-md-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div></div></div></div>';
 					} else {
-						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML('afterbegin', '<div id="cargandop" class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p class="loadingplus">Buscando la nota, por favor espere</p></div>';
 					}
 				}
 			}
@@ -97,8 +105,10 @@ function fireContentLoadedEvent () {
 function handleResponse(message) {
   //console.log("LGC: cached article retrieved: ", message.cachedC);
   // Create div to manipulate
-	var wpDiv = document.createElement('div');
-	wpDiv.innerHTML = message.cachedC;
+	let wpDiv = document.createElement('div');
+	// let's fill it with the "premium" content
+	wpDiv.setHTMLUnsafe(message.cachedC);
+	//wpDiv.insertAdjacentHTML("afterbegin", message.cachedC);
 	// Avoid main page
 	if (document.location.href != "https://www.lagaceta.com.ar/") {	
 		console.log("LGC: the page is an article...");
@@ -111,16 +121,19 @@ function handleResponse(message) {
 				console.log("LGC: the article is premium...");
 					// Check for 404
 					if (message.cachedC === 404) {
-						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Nota temporalmente inaccesible en el cache de Google, por favor intente más tarde.</p></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML("afterbegin", '<div class="articleBody col-xl-10"><p>Nota temporalmente inaccesible con el bot de Google-News, por favor intente más tarde.</p></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Nota temporalmente inaccesible en el cache de Google, por favor intente más tarde.</p></div>';
 					// Check for other numeric error
 					} else if (Number.isInteger(message.cachedC)) {
-						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Hubo un error inesperado, por favor intente nuevamente más tarde o <a href="https://webcache.googleusercontent.com/search%3Fq%3Dcache:' + document.location.href + '">visite la nota en el cache de google</a>.</p></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML("afterbegin", '<div class="articleBody col-xl-10"><p>Hubo un error inesperado, por favor intente nuevamente más tarde.</p></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>Hubo un error inesperado, por favor intente nuevamente más tarde o <a href="https://webcache.googleusercontent.com/search%3Fq%3Dcache:' + document.location.href + '">visite la nota en el cache de google</a>.</p></div>';
 					// Cache captcha probably...
 					} else if (message.cachedC === 'REDIRECTED') {
-						document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>El cache de Google requiere autorización, por favor <a href="https://webcache.googleusercontent.com/search%3Fq%3Dcache:' + document.location.href + '">visite la nota en el cache de google</a>.</p></div>';
+						document.querySelector('#articleContent').insertAdjacentHTML("afterbegin", '<div class="articleBody col-xl-10"><p>Hubo una redirección en el pedido de la nota, por favor intente nuevamente más tarde.</p></div>');
+						//document.querySelector('#articleContent').innerHTML = '<div class="articleBody col-xl-10"><p>El cache de Google requiere autorización, por favor <a href="https://webcache.googleusercontent.com/search%3Fq%3Dcache:' + document.location.href + '">visite la nota en el cache de google</a>.</p></div>';
 					} else {
 						// Get the cached div
-						var cachedDiv = wpDiv.querySelector('#articleContent');
+						let cachedDiv = wpDiv.querySelector('#articleContent');
 						// Special needs :D
 						if (especialpremium || edupremium) {
 							console.log("LGC: the article is Especial...");
@@ -150,7 +163,9 @@ function handleResponse(message) {
 								srcformat[0].className = "col-xl-8 col-lg-8 col-md-10";
 							}
 							// We need everthing inside a container
-							cachedDiv.innerHTML = '<div class="container"><div class="row justify-content-center">' + cachedDiv.innerHTML + '</div></div>';
+							cachedDiv.insertAdjacentHTML("afterbegin", '<div class="container"><div class="row justify-content-center">');
+							cachedDiv.insertAdjacentHTML("beforeend", '</div></div>');
+							//cachedDiv.innerHTML = '<div class="container"><div class="row justify-content-center">' + cachedDiv.innerHTML + '</div></div>';
 						} else {
 							// Fix formatting for video
 							const srcformatv = cachedDiv.getElementsByClassName('noGutter');
@@ -180,7 +195,11 @@ function handleResponse(message) {
 							}
 						}
 						// Inject modified cached div
-						document.getElementById('articleContent').innerHTML = cachedDiv.innerHTML;
+						//document.getElementById('articleContent').insertAdjacentHTML("afterbegin", setHTMLUnsafe(value));
+						// Hide the loading div
+						document.getElementById('cargandop').style.display = 'none';
+						document.getElementById('articleContent').setHTMLUnsafe(cachedDiv.innerHTML);
+						//document.getElementById('articleContent').innerHTML = cachedDiv.innerHTML;
 					}
 			} else {
 				console.log("LGC: the article is not premium...");

@@ -40,12 +40,12 @@ async function setDefaultValues() {
 // permissions
 async function reqPerm() {
 	let challengeAllPerms = {
-		origins: ["*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
 		permissions: ["storage", "webRequest", "webRequestBlocking"],
 	};
 	
 	let challengeOriginsPerms = {
-		origins: ["*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
 	};
 	
 	let challengeBasicPerms = {
