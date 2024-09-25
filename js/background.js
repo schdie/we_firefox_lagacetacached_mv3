@@ -95,7 +95,8 @@ browser.webRequest.onBeforeRequest.addListener(
 	  "*://*.lavoz.com.ar/sites/default/files/libs/paywall/lagaceta/pw.dev.js",
 	  "*://*.scuore.com.ar/*",
 	  "*://*.lagaceta.com.ar/js/sus/swg-merge.min.*",
-	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*"],
+	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*",
+	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js"],
   },
   ["blocking"]
 );

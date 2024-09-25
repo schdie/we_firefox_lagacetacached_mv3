@@ -3,7 +3,7 @@
   "manifest_version": 3,
   "name": "LG Cached",
   "homepage_url": "https://github.com/schdie/we_firefox_lagacetacached_mv3",
-  "version": "3.44",
+  "version": "3.45",
   
   "icons": {
     "48": "icons/48.png",
@@ -16,7 +16,7 @@
   ],
   
   "host_permissions": [
-	"*://webcache.googleusercontent.com/*", "*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"
+	"*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"
 	],
   
 	"web_accessible_resources": [
