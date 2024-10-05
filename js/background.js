@@ -121,7 +121,7 @@ let headers = new Headers({
     "User-Agent"   : "Googlebot-News"
 });
 
-// try to get the cached URL with the premium article
+// trying to get the article's content using google's news bot user agent
 browser.runtime.onMessage.addListener(
 	function(request, sender, sendResponse) {
 		requestedPremiumURL = request.premiumURL;
