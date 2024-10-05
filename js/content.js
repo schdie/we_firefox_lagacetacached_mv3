@@ -101,7 +101,7 @@ function fireContentLoadedEvent () {
 	}
 }
 
-// once we get the cached article we parse it
+// once we get the article's content we parse it
 function handleResponse(message) {
   //console.log("LGC: cached article retrieved: ", message.cachedC);
   // Create div to manipulate
@@ -217,7 +217,7 @@ function handleError(error) {
 function letsGo(e) {
 	// Needed because run_at is set to start (because of darktheme and FOUC)
 	document.addEventListener('readystatechange', event => {
-		// Wait until we can read the html we want, should be complete insted of interactive but *it works tm*
+		// Wait until we can read the html we want, should be complete instead of interactive but *it works tm*
 		if (event.target.readyState === 'interactive') {
 			// Only request on premium article
 			const premium = document.getElementsByClassName("article premium")[0];
