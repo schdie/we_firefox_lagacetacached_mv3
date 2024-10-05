@@ -1,5 +1,5 @@
 {
-  "description": "Recuperación de contenido en el cache de Google para lagaceta.com.ar",
+  "description": "Recuperación del contenido de algunos articulos para lagaceta.com.ar",
   "manifest_version": 3,
   "name": "LG Cached",
   "homepage_url": "https://github.com/schdie/we_firefox_lagacetacached_mv3",
