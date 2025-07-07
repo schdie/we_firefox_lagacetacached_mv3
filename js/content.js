@@ -16,6 +16,7 @@ function detectSystemTheme() {
 }
 
 // there's no need to execute here but doing so and doing it first no matter what allows to minimize FOUC
+// this works well with the default settings but not so much when the user forces a theme
 detectSystemTheme();
 
 // get darkmode state from storage and change/apply it if needed

@@ -47,8 +47,10 @@ div[class^="add big topbanner"] {
 
 /* elecciones */
 .darkmode .widget.election .amp-carousel-slide .contSlider .text .votes h3 span, .widget.election .candInt .contSlider .text .votes h3 span { color: #fff !important; }
+/* removed when lagaceta finally dicided to use the correct css
 .darkmode .widget.countDown img, svg { filter: invert(1) !important; }
 .darkmode .sectionHead img, svg { filter: invert(1) !important; }
+*/
 .darkmode .block .card.elec .head { color: #fff !important; }
 .darkmode .bars .partido, .bars .progress, .h2tit { color: #fff !important; }
 .darkmode .refa { color: #fff !important; }
@@ -122,10 +124,13 @@ div[class^="add big topbanner"] {
 .darkmode .left span { color: #808080 !important; }
 .darkmode b { color: #808080 !important; }
 .darkmode footer span { color: #808080 !important; }
+/* something nice for darkmode */
+.darkmode .brand .container svg path { fill: #0070d7; !important }
+ /* removed when lagaceta finally dicided to use the correct css
 .darkmode .brand .container img, svg { filter: invert(26%) sepia(71%) saturate(3141%) hue-rotate(195deg) brightness(94%) contrast(102%) !important; }
 .darkmode .widget .icon img, svg { filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(172deg) brightness(106%) contrast(101%) !important; }
 .darkmode .head img, svg { filter: invert(100%) sepia(100%) saturate(2%) hue-rotate(172deg) brightness(106%) contrast(101%) !important; }
-
+*/
 /* Funebres */
 .darkmode .cuerpo { background-color: #303234 !important; }
 .darkmode .media.agrupados { background-color: #202124 !important; }
