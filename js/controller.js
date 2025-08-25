@@ -1,16 +1,11 @@
-/* v3.7 */
+/* v3.8 */
 function showloading() {
-    if (document.getElementById("dloading"))
-        document.getElementById("dloading").style.display = "block";
+    if (document.getElementById("dloading")) document.getElementById("dloading").style.display = "block";
     else {
         var e = document.createElement("div");
-        e.setAttribute("id", "dloading"),
-        e.style.cssText = "width: 100%; height: 100%; z-index: 10009; top: 0px; left: 0px; background: rgba(255,255,255,.7); position: fixed; overflow: hidden; text-align: center";
+        e.setAttribute("id", "dloading"), e.style.cssText = "width: 100%; height: 100%; z-index: 10009; top: 0px; left: 0px; background: rgba(255,255,255,.7); position: fixed; overflow: hidden; text-align: center";
         var t = document.createElement("img");
-        t.setAttribute("src", URL_ACTUAL + "images/loading.gif"),
-        t.setAttribute("style", "position:relative;top:45%;"),
-        e.appendChild(t),
-        document.getElementsByTagName("body")[0].appendChild(e)
+        t.setAttribute("src", URL_ACTUAL + "images/loading.gif"), t.setAttribute("style", "position:relative;top:45%;"), e.appendChild(t), document.getElementsByTagName("body")[0].appendChild(e)
     }
 }
 
@@ -57,17 +52,13 @@ function scrollBar() {
 
 function share(e) {
     var t = new Object;
-    t.width = 700,
-    t.height = 435,
-    now = new Date;
+    t.width = 700, t.height = 435, now = new Date;
     now.getTime();
     if ("Netscape" == navigator.appName) {
-        t.left = window.screenX + (window.outerWidth - t.width) / 2,
-        t.top = window.screenY + (window.outerHeight - t.height) / 2;
+        t.left = window.screenX + (window.outerWidth - t.width) / 2, t.top = window.screenY + (window.outerHeight - t.height) / 2;
         var n = "screenX=" + t.left + ",screenY=" + t.top + ",resizable=no,width=" + t.width + ",height=" + t.height + ",scrollbars=yes,menubar=no,location=no,toolbar=no,status=no,directories=no"
     } else if (document.all) {
-        t.left = (screen.width - t.width) / 2,
-        t.top = (screen.height - t.height) / 2;
+        t.left = (screen.width - t.width) / 2, t.top = (screen.height - t.height) / 2;
         n = "left=" + t.left + ",top=" + t.top + ",resizable=no,width=" + t.width + ",height=" + t.height + ",scrollbars=yes,menubar=no,location=no,toolbar=no,status=no,directories=no"
     }
     window.open(e, "Redes", n)
@@ -76,32 +67,21 @@ function share(e) {
 function lazyload() {
     if ("loading" in HTMLImageElement.prototype) {
         document.querySelectorAll('img[loading="lazy"]').forEach((e => {
-                e.src = e.dataset.original
-            }))
+            e.src = e.dataset.original
+        }))
     } else {
         document.querySelectorAll('img[class="lazy"]').forEach((e => {
-                e.src = e.dataset.original
-            }))
+            e.src = e.dataset.original
+        }))
     }
 }
 
 function searchNow() {
-    value = document.getElementById("textSearch").value.trim(),
-    word = value.replace(/ /gi, "_"),
-    word2 = word.replace(/\./gi, "_"),
-    word2 = word2.toLowerCase(),
-    window.location = URL_ACTUAL + "buscar?q=" + word2
+    value = document.getElementById("textSearch").value.trim(), word = value.replace(/ /gi, "_"), word2 = word.replace(/\./gi, "_"), word2 = word2.toLowerCase(), window.location = URL_ACTUAL + "buscar?q=" + word2
 }
 
 function searchNowAdvanced() {
-    value = document.getElementById("textSearchAdvanced").value.trim(),
-    word = value.replace(/ /gi, "_"),
-    word2 = word.replace(/\./gi, "_"),
-    word2 = word2.toLowerCase(),
-    url = URL_ACTUAL + "buscar?q=" + word2,
-    document.getElementById("searchForm").setAttribute("action", url),
-    document.getElementById("searchForm").submit(),
-    showloading()
+    value = document.getElementById("textSearchAdvanced").value.trim(), word = value.replace(/ /gi, "_"), word2 = word.replace(/\./gi, "_"), word2 = word2.toLowerCase(), url = URL_ACTUAL + "buscar?q=" + word2, document.getElementById("searchForm").setAttribute("action", url), document.getElementById("searchForm").submit(), showloading()
 }
 
 function getGeneralData() {
@@ -200,47 +180,42 @@ function displayGbanner(e) {
 function close(e) {
     showloading();
     var t = new XMLHttpRequest;
-    t.open("POST", URL_ACTUAL + "usuarios/logout/" + e, !0),
-    t.send(),
-    t.onload = function () {
-        200 == t.status && (resp = JSON.parse(t.response), resp.status && (callSignPW = setInterval((function () {
-                            sendUserPW(!1, !1)
-                        }), 500), window.location = resp.back_url))
+    t.open("POST", URL_ACTUAL + "usuarios/logout/" + e, !0), t.send(), t.onload = function() {
+        200 == t.status && (resp = JSON.parse(t.response), resp.status && (callSignPW = setInterval((function() {
+            sendUserPW(!1, !1)
+        }), 500), window.location = resp.back_url))
     }
 }
 
 function closeAlert() {
     var e = new XMLHttpRequest;
-    e.open("POST", URL_ACTUAL + "ajax/close_zocalo", !0),
-    e.send(),
-    e.onload = function () {
+    e.open("POST", URL_ACTUAL + "ajax/close_zocalo", !0), e.send(), e.onload = function() {
         e.status
-    },
-    document.getElementById("alertHead").style.display = "none"
+    }, document.getElementById("alertHead").style.display = "none"
 }
 
 function sendUserPW(e, t) {
     "undefined" != typeof paywall && void 0 !== paywall.auth && (e ? paywall.auth.user() ? t && paywall.auth.user().id != t.id && paywall.signIn({
-            id: t.id,
-            email: t.email,
-            first_name: t.nombre,
-            last_name: t.apellido,
-            avatar: t.avatar,
-            identification_type: t.identification_type,
-            identification_number: t.identification_number,
-            phone: t.celular,
-            roles: t.roles
-        }) : paywall.signIn({
-            id: t.id,
-            email: t.email,
-            first_name: t.nombre,
-            last_name: t.apellido,
-            avatar: t.avatar,
-            identification_type: t.identification_type,
-            identification_number: t.identification_number,
-            phone: t.celular,
-            roles: t.roles
-        }) : paywall.auth.isLogged() && paywall.signOff(), clearInterval(callSignPW))
+        id: t.id,
+        email: t.email,
+        first_name: t.nombre,
+        last_name: t.apellido,
+        avatar: t.avatar,
+        identification_type: t.identification_type,
+        identification_number: t.identification_number,
+        phone: t.celular,
+        roles: t.roles
+    }) : paywall.signIn({
+        id: t.id,
+        email: t.email,
+        first_name: t.nombre,
+        last_name: t.apellido,
+        avatar: t.avatar,
+        identification_type: t.identification_type,
+        identification_number: t.identification_number,
+        phone: t.celular,
+        roles: t.roles
+    }) : paywall.auth.isLogged() && paywall.signOff(), clearInterval(callSignPW))
 }
 
 /*
@@ -275,11 +250,8 @@ function sendOnesignal(e, t, n, s, a) {
 
 function sendShareCl(e, t) {
     var n = new XMLHttpRequest,
-    s = "objeto_id=" + e + "&type=" + t;
-    n.open("POST", URL_ACTUAL + "redes/shareTwWh", !0),
-    n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-    n.send(s),
-    n.onload = function () {
+        s = "objeto_id=" + e + "&type=" + t;
+    n.open("POST", URL_ACTUAL + "redes/shareTwWh", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send(s), n.onload = function() {
         n.status
     }
 }
@@ -290,169 +262,128 @@ function resizeInit(e) {
 }
 
 function resize(e) {
-    10 == e.value ? (document.getElementById("articleContainer").classList.remove("t2"), document.getElementById("articleContainer").classList.remove("t3"), document.getElementById("articleContainer").classList.add("t1")) : 20 == e.value ? (document.getElementById("articleContainer").classList.remove("t1"), document.getElementById("articleContainer").classList.remove("t3"), document.getElementById("articleContainer").classList.add("t2")) : 30 == e.value ? (document.getElementById("articleContainer").classList.remove("t1"), document.getElementById("articleContainer").classList.remove("t2"), document.getElementById("articleContainer").classList.add("t3")) : (document.getElementById("articleContainer").classList.remove("t1"), document.getElementById("articleContainer").classList.remove("t2"), document.getElementById("articleContainer").classList.remove("t3")),
-    "myRange1" == e.id ? document.getElementById("myRange2").value = e.value : document.getElementById("myRange1").value = e.value;
+    10 == e.value ? (document.getElementById("articleContainer").classList.remove("t2"), document.getElementById("articleContainer").classList.remove("t3"), document.getElementById("articleContainer").classList.add("t1")) : 20 == e.value ? (document.getElementById("articleContainer").classList.remove("t1"), document.getElementById("articleContainer").classList.remove("t3"), document.getElementById("articleContainer").classList.add("t2")) : 30 == e.value ? (document.getElementById("articleContainer").classList.remove("t1"), document.getElementById("articleContainer").classList.remove("t2"), document.getElementById("articleContainer").classList.add("t3")) : (document.getElementById("articleContainer").classList.remove("t1"), document.getElementById("articleContainer").classList.remove("t2"), document.getElementById("articleContainer").classList.remove("t3")), "myRange1" == e.id ? document.getElementById("myRange2").value = e.value : document.getElementById("myRange1").value = e.value;
     var t = new XMLHttpRequest,
-    n = "range=" + e.value;
-    t.open("POST", URL_ACTUAL + "ajax/changeSizeArticle", !0),
-    t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-    t.send(n),
-    t.onload = function () {
+        n = "range=" + e.value;
+    t.open("POST", URL_ACTUAL + "ajax/changeSizeArticle", !0), t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), t.send(n), t.onload = function() {
         t.status
     }
 }
 
-document.addEventListener && lazyload(), document.getElementById("textSearch").addEventListener("keyup", (function (e) {
-        13 == (e.keyCode || e.which) && searchNow()
-    }));
+document.getElementById("textSearch").addEventListener("keyup", (function(e) {
+    13 == (e.keyCode || e.which) && searchNow()
+}));
 var minxmin = {
     intervalos: {},
-    getTime: function (e) {
+    getTime: function(e) {
         new Date;
         var t = new Date(e).getTime(),
-        n = (new Date).getTime() - t,
-        s = parseInt(n / 1e3 / 60 / 60),
-        a = parseInt(n / 1e3 / 60 - 60 * s),
-        o = parseInt(n / 1e3 - 60 * s * 60 - 60 * a);
+            n = (new Date).getTime() - t,
+            s = parseInt(n / 1e3 / 60 / 60),
+            a = parseInt(n / 1e3 / 60 - 60 * s),
+            o = parseInt(n / 1e3 - 60 * s * 60 - 60 * a);
         return s > 0 ? (s > 9 ? s : "0" + s) + ":" + (a > 9 ? a : "0" + a) + ":" + (o > 9 ? o : "0" + o) : (a > 9 ? a : "0" + a) + ":" + (o > 9 ? o : "0" + o)
     },
-    showTimer: function (e, t) {
+    showTimer: function(e, t) {
         var n = e.dataset.fecha_estado;
         t.innerHTML = this.getTime(n)
     },
-    getMatchData: function (e, t) {
+    getMatchData: function(e, t) {
         var n = new XMLHttpRequest;
-        n.open("GET", URL_ACTUAL + "partidos/mam_minuto/" + e, !0),
-        n.onload = function () {
+        n.open("GET", URL_ACTUAL + "partidos/mam_minuto/" + e, !0), n.onload = function() {
             200 == n.status && (resp = JSON.parse(n.response), t(resp))
-        },
-        n.send()
+        }, n.send()
     },
-    iniciarReloj: function (e, t, n) {
-        minxmin.intervalos["reloj_" + t] || (minxmin.intervalos["reloj_" + t] = setInterval((function () {
-                        minxmin.showTimer(e, n)
-                    }), 1e3))
+    iniciarReloj: function(e, t, n) {
+        minxmin.intervalos["reloj_" + t] || (minxmin.intervalos["reloj_" + t] = setInterval((function() {
+            minxmin.showTimer(e, n)
+        }), 1e3))
     },
-    stop: function (e) {
+    stop: function(e) {
         minxmin.intervalos["reloj_" + e] && clearInterval(minxmin.intervalos["reloj_" + e])
     },
-    startInterval: function (e, t, n, s) {
+    startInterval: function(e, t, n, s) {
         var a = this;
-        minxmin.intervalos[e + n] = setInterval((function () {
-                    a.getMatchData(n, s)
-                }), 1e3 * t)
+        minxmin.intervalos[e + n] = setInterval((function() {
+            a.getMatchData(n, s)
+        }), 1e3 * t)
     },
-    ajaxCall: function (e) {
+    ajaxCall: function(e) {
         var t = e.dataset.id_partido,
-        n = (e.dataset.estado, e.dataset.check),
-        s = e.getElementsByClassName("js-reloj-mam")[0],
-        a = e.getElementsByClassName("js-hora")[0],
-        o = s.dataset.uniq,
-        i = e.getElementsByClassName("js-descripcion-estado")[0];
-        if (e.getElementsByClassName("js-marquee"))
-            var r = e.getElementsByClassName("js-marquee")[0];
-        else
-            r = !1;
+            n = (e.dataset.estado, e.dataset.check),
+            s = e.getElementsByClassName("js-reloj-mam")[0],
+            a = e.getElementsByClassName("js-hora")[0],
+            o = s.dataset.uniq,
+            i = e.getElementsByClassName("js-descripcion-estado")[0];
+        if (e.getElementsByClassName("js-marquee")) var r = e.getElementsByClassName("js-marquee")[0];
+        else r = !1;
         var l = e.getElementsByClassName("js-local-name")[0],
-        d = e.getElementsByClassName("js-visit-name")[0],
-        c = e.getElementsByClassName("js-local-shield")[0],
-        m = e.getElementsByClassName("js-visit-shield")[0],
-        u = e.getElementsByClassName("js-score")[0],
-        p = this,
-        g = function (e) {
-            switch (l.innerHTML = e.local_abbr, d.innerHTML = e.visita_abbr, c.setAttribute("src", e.escudo_local), m.setAttribute("src", e.escudo_visita), e.gol_penal_local ? u.innerHTML = '<span style="font-size:10px;">(' + e.gol_penal_local + ")</span>" + e.gol_local + " . " + e.gol_visita + '<span style="font-size:10px;">(' + e.gol_penal_visita + ")</span>" : u.innerHTML = e.gol_local + " . " + e.gol_visita, s.dataset.fecha_estado = e.fecha_inicio_estado, parseInt(e.mam_estado)) {
-            case 0:
-                a.innerHTML = e.fecha_corta + " " + e.hora_inicio + " hrs",
-                i.innerHTML = "",
-                r && (r.innerHTML = "");
-                break;
-            case 1:
-                minxmin.iniciarReloj(s, o, a),
-                i.innerHTML = "PT",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 2:
-                minxmin.stop(o),
-                e.fecha_corta ? a.innerHTML = e.fecha_corta : a.innerHTML = "Fin",
-                i.innerHTML = "",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 3:
-                minxmin.stop(o),
-                a.innerHTML = "Susp",
-                i.innerHTML = "",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 4:
-                minxmin.stop(o),
-                a.innerHTML = "Post",
-                i.innerHTML = "";
-                break;
-            case 5:
-            case 9:
-                minxmin.stop(o),
-                a.innerHTML = "ET",
-                i.innerHTML = "",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 6:
-                minxmin.iniciarReloj(s, o, a),
-                i.innerHTML = "ST",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 7:
-                minxmin.stop(o),
-                a.innerHTML = "Alar",
-                i.innerHTML = "",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 8:
-                minxmin.iniciarReloj(s, o, a),
-                i.innerHTML = "PTA",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 10:
-                minxmin.iniciarReloj(s, o, a),
-                i.innerHTML = "STA",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 11:
-                minxmin.stop(o),
-                a.innerHTML = "Fin",
-                i.innerHTML = "",
-                r && (r.innerHTML = e.incidencias);
-                break;
-            case 12:
-                minxmin.stop(o),
-                a.innerHTML = "Pen",
-                i.innerHTML = "",
-                r && (r.innerHTML = e.incidencias),
-                minxmin.intervalos["penales_partido_" + t] || (clearInterval(minxmin.intervalos["partido_" + t]), p.startInterval("penales_partido_", 10, t, g))
-            }
-        };
-        this.getMatchData(t, g),
-        1 == n && this.startInterval("partido_", 60, t, g)
-    },
-    ajaxCallCards: function (e) {
-        var t = e.dataset.pid,
-        n = e.getElementsByClassName("js-nombre-local")[0],
-        s = e.getElementsByClassName("js-nombre-visita")[0],
-        a = e.getElementsByClassName("js-escudo-local")[0],
-        o = e.getElementsByClassName("js-escudo-visita")[0],
-        i = e.getElementsByClassName("js-resultado")[0];
-        this.getMatchData(t, (function (e) {
-                if (e.local_abbr)
-                    switch (n.innerHTML = e.local_abbr, s.innerHTML = e.visita_abbr, a.setAttribute("src", e.escudo_local), o.setAttribute("src", e.escudo_visita), parseInt(e.mam_estado)) {
+            d = e.getElementsByClassName("js-visit-name")[0],
+            c = e.getElementsByClassName("js-local-shield")[0],
+            m = e.getElementsByClassName("js-visit-shield")[0],
+            u = e.getElementsByClassName("js-score")[0],
+            p = this,
+            g = function(e) {
+                switch (l.innerHTML = e.local_abbr, d.innerHTML = e.visita_abbr, c.setAttribute("src", e.escudo_local), m.setAttribute("src", e.escudo_visita), e.gol_penal_local ? u.innerHTML = '<span style="font-size:10px;">(' + e.gol_penal_local + ")</span>" + e.gol_local + " . " + e.gol_visita + '<span style="font-size:10px;">(' + e.gol_penal_visita + ")</span>" : u.innerHTML = e.gol_local + " . " + e.gol_visita, s.dataset.fecha_estado = e.fecha_inicio_estado, parseInt(e.mam_estado)) {
+                    case 0:
+                        a.innerHTML = e.fecha_corta + " " + e.hora_inicio + " hrs", i.innerHTML = "", r && (r.innerHTML = "");
+                        break;
+                    case 1:
+                        minxmin.iniciarReloj(s, o, a), i.innerHTML = "PT", r && (r.innerHTML = e.incidencias);
+                        break;
                     case 2:
-                        e.gol_penal_local || e.gol_penal_visita ? i.innerHTML = "<span>(" + e.gol_penal_local + ")<span> " + e.gol_local + " . " + e.gol_visita + " <span>(" + e.gol_penal_visita + ")</span>" : i.innerHTML = e.gol_local + " . " + e.gol_visita;
+                        minxmin.stop(o), e.fecha_corta ? a.innerHTML = e.fecha_corta : a.innerHTML = "Fin", i.innerHTML = "", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 3:
+                        minxmin.stop(o), a.innerHTML = "Susp", i.innerHTML = "", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 4:
+                        minxmin.stop(o), a.innerHTML = "Post", i.innerHTML = "";
+                        break;
+                    case 5:
+                    case 9:
+                        minxmin.stop(o), a.innerHTML = "ET", i.innerHTML = "", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 6:
+                        minxmin.iniciarReloj(s, o, a), i.innerHTML = "ST", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 7:
+                        minxmin.stop(o), a.innerHTML = "Alar", i.innerHTML = "", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 8:
+                        minxmin.iniciarReloj(s, o, a), i.innerHTML = "PTA", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 10:
+                        minxmin.iniciarReloj(s, o, a), i.innerHTML = "STA", r && (r.innerHTML = e.incidencias);
+                        break;
+                    case 11:
+                        minxmin.stop(o), a.innerHTML = "Fin", i.innerHTML = "", r && (r.innerHTML = e.incidencias);
                         break;
                     case 12:
-                        i.innerHTML = "<span>(" + e.gol_penal_local + ")<span> " + e.gol_local + " . " + e.gol_visita + " <span>(" + e.gol_penal_visita + ")</span>";
-                        break;
-                    default:
-                        i.innerHTML = e.gol_local + " . " + e.gol_visita
-                    }
-            }))
+                        minxmin.stop(o), a.innerHTML = "Pen", i.innerHTML = "", r && (r.innerHTML = e.incidencias), minxmin.intervalos["penales_partido_" + t] || (clearInterval(minxmin.intervalos["partido_" + t]), p.startInterval("penales_partido_", 10, t, g))
+                }
+            };
+        this.getMatchData(t, g), 1 == n && this.startInterval("partido_", 60, t, g)
+    },
+    ajaxCallCards: function(e) {
+        var t = e.dataset.pid,
+            n = e.getElementsByClassName("js-nombre-local")[0],
+            s = e.getElementsByClassName("js-nombre-visita")[0],
+            a = e.getElementsByClassName("js-escudo-local")[0],
+            o = e.getElementsByClassName("js-escudo-visita")[0],
+            i = e.getElementsByClassName("js-resultado")[0];
+        this.getMatchData(t, (function(e) {
+            if (e.local_abbr) switch (n.innerHTML = e.local_abbr, s.innerHTML = e.visita_abbr, a.setAttribute("src", e.escudo_local), o.setAttribute("src", e.escudo_visita), parseInt(e.mam_estado)) {
+                case 2:
+                    e.gol_penal_local || e.gol_penal_visita ? i.innerHTML = "<span>(" + e.gol_penal_local + ")<span> " + e.gol_local + " . " + e.gol_visita + " <span>(" + e.gol_penal_visita + ")</span>" : i.innerHTML = e.gol_local + " . " + e.gol_visita;
+                    break;
+                case 12:
+                    i.innerHTML = "<span>(" + e.gol_penal_local + ")<span> " + e.gol_local + " . " + e.gol_visita + " <span>(" + e.gol_penal_visita + ")</span>";
+                    break;
+                default:
+                    i.innerHTML = e.gol_local + " . " + e.gol_visita
+            }
+        }))
     }
 };
 
@@ -462,12 +393,7 @@ function hideZoc() {
 
 function copyToClipboard(e) {
     var t = document.createElement("textarea");
-    t.value = e,
-    document.body.appendChild(t),
-    t.select(),
-    document.execCommand("Copy"),
-    t.remove(),
-    closeModal("mshare")
+    t.value = e, document.body.appendChild(t), t.select(), document.execCommand("Copy"), t.remove(), closeModal("mshare")
 }
 
 /*
@@ -541,18 +467,15 @@ function showWidgetList(e) {
         var t = document.getElementById("listID").value;
         if (t) {
             var n = new XMLHttpRequest,
-            s = "list_id=" + t + "&nota_id=" + e;
-            n.open("POST", URL_ACTUAL + "widget/show_widget_list", !0),
-            n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-            n.send(s),
-            n.onload = function () {
+                s = "list_id=" + t + "&nota_id=" + e;
+            n.open("POST", URL_ACTUAL + "widget/show_widget_list", !0), n.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), n.send(s), n.onload = function() {
                 200 == n.status && (resp = JSON.parse(n.response), resp.status && (document.getElementById("lgwid").innerHTML = resp.widget, dataLayer.push({
-                            event: "WidgetList",
-                            eventCategory: "WidgetList",
-                            eventAction: resp.eventAction,
-                            eventLabel: resp.eventLabel,
-                            eventValue: 1
-                        })))
+                    event: "WidgetList",
+                    eventCategory: "WidgetList",
+                    eventAction: resp.eventAction,
+                    eventLabel: resp.eventLabel,
+                    eventValue: 1
+                })))
             }
         }
     }
@@ -578,29 +501,23 @@ function showFormWidgetSubscribe(e, t, n) {
 */
 
 function suscLista(e) {
-    showloading(),
-    document.getElementById("msj_errorsus").innerHTML = "";
+    showloading(), document.getElementById("msj_errorsus").innerHTML = "";
     var t = document.getElementById(e);
-    formData = new FormData(t),
-    grecaptcha.execute("6LdM4ZQUAAAAAJxQkCG_8CujiKFD9HnnhrgIlPAn").then((function (e) {
-            formData.append("token", e);
-            var t = new XMLHttpRequest;
-            t.open("POST", URL_ACTUAL + "widget/suscribe", !0),
-            t.send(formData),
-            t.onload = function () {
-                200 == t.status ? (resp = JSON.parse(t.response), resp.status ? (document.getElementById("contNews").innerHTML = resp.html_res, closeModal("mlist"), dataLayer.push({
-                            event: "WidgetList",
-                            eventCategory: "WidgetList",
-                            eventAction: resp.eventAction,
-                            eventLabel: resp.eventLabel,
-                            eventValue: 1
-                        })) : document.getElementById("msj_errorsus").innerHTML = resp.msj) : document.getElementById("msj_errorsus").innerHTML = "Se produjo un error inesperado. Intentelo nuevamente.",
-                hideloading()
-            }
-        })).catch((function () {
-            hideloading(),
-            document.getElementById("msj_errorsus").innerHTML = "Se produjo un error inesperado. Intentelo nuevamente."
-        }))
+    formData = new FormData(t), grecaptcha.execute("6LdM4ZQUAAAAAJxQkCG_8CujiKFD9HnnhrgIlPAn").then((function(e) {
+        formData.append("token", e);
+        var t = new XMLHttpRequest;
+        t.open("POST", URL_ACTUAL + "widget/suscribe", !0), t.send(formData), t.onload = function() {
+            200 == t.status ? (resp = JSON.parse(t.response), resp.status ? (document.getElementById("contNews").innerHTML = resp.html_res, closeModal("mlist"), dataLayer.push({
+                event: "WidgetList",
+                eventCategory: "WidgetList",
+                eventAction: resp.eventAction,
+                eventLabel: resp.eventLabel,
+                eventValue: 1
+            })) : document.getElementById("msj_errorsus").innerHTML = resp.msj) : document.getElementById("msj_errorsus").innerHTML = "Se produjo un error inesperado. Intentelo nuevamente.", hideloading()
+        }
+    })).catch((function() {
+        hideloading(), document.getElementById("msj_errorsus").innerHTML = "Se produjo un error inesperado. Intentelo nuevamente."
+    }))
 }
 
 /*
@@ -618,10 +535,9 @@ function pushEventGTM(e, t, n, s, a) {
 if (document.addEventListener) {
     const e = document.location.pathname.split("/");
     var lgid = 0;
-    e.forEach((function (t, n) {
-            "nota" == t && (lgid = e[n + 1])
-        })),
-    lgid > 0 ? getGeneralDataFromArticle(lgid, 32) : getGeneralData()
+    e.forEach((function(t, n) {
+        "nota" == t && (lgid = e[n + 1])
+    })), lgid > 0 ? getGeneralDataFromArticle(lgid, 32) : getGeneralData()
 }
 
 /* og
@@ -671,11 +587,8 @@ function bikers(e) {
     var t = document.getElementById(e);
     formData = new FormData(t);
     var n = new XMLHttpRequest;
-    n.open("POST", URL_ACTUAL + "widget/get_bikers", !0),
-    n.send(formData),
-    n.onload = function () {
-        200 == n.status && (resp = JSON.parse(n.response), resp.status && (document.getElementById("result").innerHTML = resp.view)),
-        hideloading()
+    n.open("POST", URL_ACTUAL + "widget/get_bikers", !0), n.send(formData), n.onload = function() {
+        200 == n.status && (resp = JSON.parse(n.response), resp.status && (document.getElementById("result").innerHTML = resp.view)), hideloading()
     }
 }
 
@@ -715,39 +628,27 @@ function hideZocalo() {
 function elecciones2023() {
     showloading();
     var e = document.getElementById("municipio"),
-    t = new XMLHttpRequest,
-    n = "municipio_id=" + e.value;
-    t.open("POST", URL_ACTUAL + "widget/elecc2023_int", !0),
-    t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-    t.send(n),
-    t.onload = function () {
-        200 == t.status && (resp = JSON.parse(t.response), resp.status && (document.getElementById("cont_int").innerHTML = resp.view)),
-        hideloading()
+        t = new XMLHttpRequest,
+        n = "municipio_id=" + e.value;
+    t.open("POST", URL_ACTUAL + "widget/elecc2023_int", !0), t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), t.send(n), t.onload = function() {
+        200 == t.status && (resp = JSON.parse(t.response), resp.status && (document.getElementById("cont_int").innerHTML = resp.view)), hideloading()
     }
 }
 
 function elecciones2023_paso(e) {
     showloading();
     var t = new XMLHttpRequest,
-    n = "categoria_id=" + e;
-    t.open("POST", URL_ACTUAL + "widget/elecc2023_paso", !0),
-    t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-    t.send(n),
-    t.onload = function () {
-        200 == t.status && (resp = JSON.parse(t.response), resp.status && (document.getElementById("res_partidos").innerHTML = resp.view, 1 == e ? (document.getElementById("cat_2").classList.remove("active"), document.getElementById("cat_1").classList.add("active")) : (document.getElementById("cat_1").classList.remove("active"), document.getElementById("cat_2").classList.add("active")))),
-        hideloading()
+        n = "categoria_id=" + e;
+    t.open("POST", URL_ACTUAL + "widget/elecc2023_paso", !0), t.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), t.send(n), t.onload = function() {
+        200 == t.status && (resp = JSON.parse(t.response), resp.status && (document.getElementById("res_partidos").innerHTML = resp.view, 1 == e ? (document.getElementById("cat_2").classList.remove("active"), document.getElementById("cat_1").classList.add("active")) : (document.getElementById("cat_1").classList.remove("active"), document.getElementById("cat_2").classList.add("active")))), hideloading()
     }
 }
 
 function elecciones2023_grales(e, t, n) {
     showloading();
     var s = new XMLHttpRequest,
-    a = "categoria_id=" + e + "&distrito_id=" + t + "&tipo=" + n;
-    s.open("POST", URL_ACTUAL + "widget/elecc2023_gral", !0),
-    s.setRequestHeader("Content-type", "application/x-www-form-urlencoded"),
-    s.send(a),
-    s.onload = function () {
-        200 == s.status && (resp = JSON.parse(s.response), resp.status && (document.getElementById(resp.content_id).innerHTML = resp.view)),
-        hideloading()
+        a = "categoria_id=" + e + "&distrito_id=" + t + "&tipo=" + n;
+    s.open("POST", URL_ACTUAL + "widget/elecc2023_gral", !0), s.setRequestHeader("Content-type", "application/x-www-form-urlencoded"), s.send(a), s.onload = function() {
+        200 == s.status && (resp = JSON.parse(s.response), resp.status && (document.getElementById(resp.content_id).innerHTML = resp.view)), hideloading()
     }
 }

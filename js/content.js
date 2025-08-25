@@ -180,13 +180,16 @@ function handleResponse(message) {
 							}
 							// Fix main class
 							//cachedDiv.setAttribute ("class", "row justify-content-center");
-							// Fix img src if needed
+							/*
+							// Fix img src if needed, this is not needed anymore because someone is doing things right in lagaceta...
 							const srcImages = cachedDiv.querySelectorAll('.pic > img');
 							if ( srcImages.length ) {
 								for(var i=0;i<srcImages.length;i++){
 									cachedDiv.querySelectorAll('.pic > img')[i].src = cachedDiv.querySelectorAll('.pic > img')[i].getAttribute('data-original');
+									console.log("LGC: srcImages:", cachedDiv.querySelectorAll('.pic > img')[i]);
 								}
 							}
+							*/
 							// Fix video if needed
 							const srcIframes = cachedDiv.querySelectorAll('.image > iframe');
 							if ( srcIframes.length ) {
