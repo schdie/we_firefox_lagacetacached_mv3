@@ -138,14 +138,16 @@ function handleResponse(message) {
 						// Special needs :D
 						if (especialpremium || edupremium) {
 							console.log("LGC: the article is Especial...");
-							// Fix img src if needed 
-							// This works for edu but may not work for especial, needs more testing
+							/*
+							// Fix img src if needed, this is not needed anymore because someone is doing things right in lagaceta...
+							// This works for edu but may not work for especial, needs more testing,
 							const srcImages = cachedDiv.querySelectorAll('.pic > img');
 							if ( srcImages.length ) {
 								for(var i=0;i<srcImages.length;i++){
 									cachedDiv.querySelectorAll('.pic > img')[i].src = cachedDiv.querySelectorAll('.pic > img')[i].getAttribute('data-original');
 								}
 							}
+							*/
 							// Fix formatting for videos
 							const srcformatv = cachedDiv.getElementsByClassName('noGutter');
 							while (srcformatv.length) {
