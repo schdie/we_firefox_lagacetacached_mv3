@@ -202,8 +202,10 @@ function handleResponse(message) {
 						}
 						// Inject modified cached div
 						//document.getElementById('articleContent').insertAdjacentHTML("afterbegin", setHTMLUnsafe(value));
-						// Hide the loading div
-						document.getElementById('cargandop').style.display = 'none';
+						// hide the loading div...
+						if (document.getElementById('cargandop') !== null) {
+							document.getElementById('cargandop').style.display = 'none';
+						}
 						document.getElementById('articleContent').setHTMLUnsafe(cachedDiv.innerHTML);
 						//document.getElementById('articleContent').innerHTML = cachedDiv.innerHTML;
 					}
