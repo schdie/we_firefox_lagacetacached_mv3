@@ -16,7 +16,7 @@
   ],
   
   "host_permissions": [
-	"*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"
+	"*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*"
 	],
   
 	"web_accessible_resources": [

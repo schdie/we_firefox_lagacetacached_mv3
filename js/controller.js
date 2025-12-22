@@ -592,7 +592,7 @@ function bikers(e) {
     }
 }
 
-/* new from 2.3/4 to 3.7 - not useful
+/* new from 2.3/4 to 3.7
 function sendInfoMf(e, t, n) {
     readSess("lg_mf_" + e) || window.marfeel.cmd.push(["compass", function (s) {
                 s.setSiteUserId(e),
@@ -601,16 +601,22 @@ function sendInfoMf(e, t, n) {
             }
         ])
 }
+*/
+
+/* new from 2.3/4 to 3.7 */
 function setSess(e, t, n, s) {
     if ("https:" == document.location.protocol)
         var a = "; sameSite=None; secure";
     else
         a = "";
     var o = new Date;
-    o.setTime(o.getTime() + 24 * n * 60 * 60 * 1e3);
+    /*  o.setTime(o.getTime() + 24 * n * 60 * 60 * 1e3); */
+    o.setTime(o.getTime() + 192 * n * 60 * 60 * 1e3);
     var i = "expires=" + o.toGMTString();
     document.cookie = e + "=" + t + "; " + i + "; path=/; domain=" + s + a
 }
+
+/* new from 2.3/4 to 3.7 */
 function readSess(e) {
     for (var t = e + "=", n = document.cookie.split(";"), s = 0; s < n.length; s++) {
         for (var a = n[s]; " " == a.charAt(0); )
@@ -620,6 +626,8 @@ function readSess(e) {
     }
     return null
 }
+
+/*
 function hideZocalo() {
     (document.getElementById("gpt_unit_/1418175/LGT_Zocalo_Google_0") || document.getElementById("gpt_unit_/1418175/LGTM_Zocalo_Google_0")) && (googletag.destroySlots([anchor_slot]), clearInterval(callHideZocalo))
 }

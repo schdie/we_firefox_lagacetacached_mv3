@@ -92,11 +92,13 @@ function cancel(requestDetails) {
 browser.webRequest.onBeforeRequest.addListener(
 		cancel,
   {urls: [
-	  "*://*.lavoz.com.ar/sites/default/files/libs/paywall/lagaceta/pw.dev.js",
+	  "*://*.lavoz.com.ar/*.js",
 	  "*://*.scuore.com.ar/*",
 	  "*://*.lagaceta.com.ar/js/sus/swg-merge.min.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*",
-	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js"],
+	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js",
+	  "*://*.cloudfront.net/*lagaceta-pw*.js"
+	  ],
   },
   ["blocking"]
 );
