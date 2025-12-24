@@ -97,7 +97,7 @@ browser.webRequest.onBeforeRequest.addListener(
 	  "*://*.lagaceta.com.ar/js/sus/swg-merge.min.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js",
-	  "*://*.cloudfront.net/*lagaceta-pw*.js"
+	  "*://*.cloudfront.net/*lagaceta-pw*.js*"
 	  ],
   },
   ["blocking"]
