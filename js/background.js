@@ -93,7 +93,7 @@ browser.webRequest.onBeforeRequest.addListener(
 		cancel,
   {urls: [
 	  "*://*.lavoz.com.ar/*.js",
-	  "*://*.scuore.com.ar/*",
+	  "*://*.scuore.com.ar/*.js",
 	  "*://*.lagaceta.com.ar/js/sus/swg-merge.min.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js",

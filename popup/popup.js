@@ -60,7 +60,7 @@ optionsForm.dmToggle.addEventListener('change', (event) => {
 
 // check current permissions status
 let testPermissions = {
-  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"]
+  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*"]
 };
 
 browser.permissions.contains(testPermissions).then((result) => {
@@ -74,7 +74,7 @@ browser.permissions.contains(testPermissions).then((result) => {
 
 // User toggle to request permissions in mv3
 const permissionsToRequest = {
-  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"]
+  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*"]
 }
 
 function requestPermissions() {
