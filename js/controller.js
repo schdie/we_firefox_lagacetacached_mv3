@@ -136,10 +136,10 @@ function getGeneralDataFromArticle(e, t) {
                                 sendUserPW(!1, !1)
                             //}), 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent && (document.getElementById("articleContent").innerHTML = resp.viewContent, resp.ads_ajax && (callGtag = setInterval(displayGbanner, 1e3, resp.ads_ajax)), lazyload(), resp.show_wall && (document.getElementsByTagName("html")[0].style = "overflow: hidden", document.getElementById("dilogComments").remove(), document.getElementById("articleAudio") && document.getElementById("articleAudio").remove()), resp.call_tiktok)) {
                             }), 500), document.getElementById("user_sidebar").innerHTML = resp.user_sidebar, resp.is_subscriber ? document.getElementById("side_suscription").style.display = "none" : document.getElementById("lgwid") && (document.getElementById("lgwid").innerHTML = resp.viewWidget), "" != resp.viewContent) {
-					const e = document.createElement("script");
-                    e.src = "https://www.tiktok.com/embed.js",
-                    e.async = !0,
-                    document.body.appendChild(e)
+					//const e = document.createElement("script");
+                    //e.src = "https://www.tiktok.com/embed.js",
+                    //e.async = !0,
+                    //document.body.appendChild(e)
                 }
                 if (resp.share)
                     document.querySelectorAll("span.js-share-count").forEach((function (e) {
