@@ -40,12 +40,12 @@ async function setDefaultValues() {
 // permissions
 async function reqPerm() {
 	let challengeAllPerms = {
-		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*", "*://*.wyleex.com/"],
 		permissions: ["storage", "webRequest", "webRequestBlocking"],
 	};
 	
 	let challengeOriginsPerms = {
-		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*", "*://*.wyleex.com/"],
 	};
 	
 	let challengeBasicPerms = {
@@ -97,7 +97,8 @@ browser.webRequest.onBeforeRequest.addListener(
 	  "*://*.lagaceta.com.ar/js/sus/swg-merge.min.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js",
-	  "*://*.cloudfront.net/*lagaceta-pw*.js*"
+	  "*://*.cloudfront.net/*lagaceta-pw*.js*",
+	  "*://*.wyleex.com/zonda/pre/lagaceta-pre-pw.js?*"
 	  ],
   },
   ["blocking"]
