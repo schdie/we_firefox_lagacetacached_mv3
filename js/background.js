@@ -98,7 +98,7 @@ browser.webRequest.onBeforeRequest.addListener(
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsSiltiumProd.*",
 	  "*://*.lagaceta.com.ar/assets/2022/js/analyticsScuor*.js",
 	  "*://*.cloudfront.net/*lagaceta-pw*.js*",
-	  "*://*.wyleex.com/zonda/pre/lagaceta-pre-pw.js?*"
+	  "*://*.wyleex.com/*.js*"
 	  ],
   },
   ["blocking"]
