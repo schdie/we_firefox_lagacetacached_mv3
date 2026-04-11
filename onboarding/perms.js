@@ -7,7 +7,7 @@ closeButton.addEventListener("click", function(event){
 //https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/permissions/request
 const permissionsToRequest = {
   //permissions: ["storage", "webRequest", "webRequestBlocking"],
-  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*"],
+  origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*", "*://*.wyleex.com/"],
 };
 
 async function requestPermissions() {
@@ -37,12 +37,12 @@ document.getElementById("grantPerms").addEventListener("click", requestPermissio
 // check if perms are granted on load because sometimes FF refreshes the onboarding page after a permissions change
 async function reqPerm() {
 	let challengeAllPerms = {
-		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*", "*://*.wyleex.com/"],
 		permissions: ["storage", "webRequest", "webRequestBlocking"],
 	};
 	
 	let challengeOriginsPerms = {
-		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*"],
+		origins: ["*://*.lagaceta.com.ar/*", "*://*.lavoz.com.ar/*", "*://*.scuore.com.ar/*", "*://*.cloudfront.net/*", "*://*.wyleex.com/"],
 	};
 	
 	let challengeBasicPerms = {
@@ -58,7 +58,7 @@ async function reqPerm() {
 	} else {
 		console.log("ONBOARDING: Perms granted.");
 		document.getElementById("main").style.display = 'none';
-    document.getElementById("sec").style.display = 'block';
+		document.getElementById("sec").style.display = 'block';
 	}
 }
 
