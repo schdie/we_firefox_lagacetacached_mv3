@@ -169,6 +169,14 @@ div[class^="add big topbanner"] {
 .darkmode .headroom--pinned { background-color: #202124 !important; }
 */
 
+/* resumen IA */
+.darkmode .article .articleBody .resume .headResume { background-color: #292929 !important; }
+.darkmode .article .articleBody .resume { background-color: #292929 !important; }
+.darkmode .article .articleBody .resume .headResume .icon-plus-regular { color: #808080 !important; }
+.darkmode .icon-sparkles-solid-full { color: #808080 !important; }
+.darkmode .article .articleBody ul { color: #ffffff !important; }
+.darkmode .article .articleBody .resume .textResume { color: #ffffff !important; }
+
 /* 3-dots animation */
 .loadingplus:after {
   content: ' .';
